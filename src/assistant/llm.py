@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 import time
 from dataclasses import dataclass
 from typing import Any
@@ -13,6 +14,7 @@ from .config import Settings
 
 logger = logging.getLogger(__name__)
 _NS = 1e9
+_THINK = re.compile(r"<think>.*?</think>", re.S)
 
 
 class LLMError(RuntimeError):
@@ -44,6 +46,8 @@ class OllamaLLM:
         self.settings = settings or Settings()
         self.settings.assert_offline()
         self.client = ollama.Client(host=self.settings.ollama_host, timeout=self.settings.request_timeout_s)
+        # per-model request overrides, e.g. {"qwen3:8b": {"think": False}} for reasoning models
+        self.model_overrides: dict[str, dict[str, Any]] = {}
 
     # ---- health / model management -------------------------------------------------------------
     def installed_models(self) -> set[str]:
@@ -60,6 +64,23 @@ class OllamaLLM:
             if name.endswith(":latest"):
                 names.add(name.removesuffix(":latest"))
         return names
+
+    def model_info(self, model: str) -> dict[str, Any]:
+        """Exact identity of a pulled model: digest, size and (if reported) parameter count / quant."""
+        target = model if ":" in model else f"{model}:latest"
+        for m in self.client.list().models:
+            if m.model == target:
+                d = m.details
+                return {
+                    "tag": m.model,
+                    "digest": m.digest,
+                    "size_gb": round((m.size or 0) / 1024**3, 2),
+                    "family": getattr(d, "family", None) if d else None,
+                    "parameter_size": getattr(d, "parameter_size", None) if d else None,
+                    "quantization": getattr(d, "quantization_level", None) if d else None,
+                    "format": getattr(d, "format", None) if d else None,
+                }
+        raise LLMError(f"Model {model!r} is not pulled. Run: ollama pull {model}")
 
     def ensure_model(self, model: str) -> None:
         if model not in self.installed_models():
@@ -84,6 +105,7 @@ class OllamaLLM:
             messages=[{"role": "user", "content": "Reply with OK."}],
             options={**self.settings.llm_options(), "num_predict": 2},
             keep_alive=self.settings.keep_alive,
+            **self.model_overrides.get(model, {}),
         )
         return time.perf_counter() - t0
 
@@ -97,6 +119,7 @@ class OllamaLLM:
                 format=fmt,
                 options=self.settings.llm_options(),
                 keep_alive=self.settings.keep_alive,
+                **self.model_overrides.get(model, {}),
             )
         except ollama.ResponseError as exc:
             raise LLMError(f"Ollama error for {model}: {exc.error}") from exc
@@ -111,4 +134,6 @@ class OllamaLLM:
             output_tokens=resp.eval_count or 0,
             eval_s=(resp.eval_duration or 0) / _NS,
         )
-        return LLMResponse(content=resp.message.content or "", stats=stats)
+        # Defensive: strip reasoning traces if a thinking model emits them inline
+        content = _THINK.sub("", resp.message.content or "").strip()
+        return LLMResponse(content=content, stats=stats)

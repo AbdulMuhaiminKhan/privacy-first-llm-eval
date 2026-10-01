@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "privacy-first-llm-eval"
 version = "1.0.0"
-description = "Fully offline document Q&A assistant with local-LLM benchmarking (Ollama + Pydantic)."
+description = "Controlled offline experiment: does structured output change small-LLM accuracy, and is self-reported confidence calibrated?"
 requires-python = ">=3.10"
 dynamic = ["dependencies"]
 
@@ -14,7 +14,7 @@ dependencies = { file = ["requirements.txt"] }
 
 [project.scripts]
 offline-assistant = "assistant.cli:main"
-offline-bench = "benchmark.run_benchmark:main"
+llm-bench = "benchmark.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

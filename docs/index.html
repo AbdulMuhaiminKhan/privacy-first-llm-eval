@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Structured Output vs Accuracy - Local LLM Benchmark</title>
+<meta name="description" content="Does forcing JSON make small local LLMs worse, and is their stated confidence calibrated? Interactive results.">
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f4f3f0; --surface-1: #fcfcfb; --border: #e4e3df;
+    --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #7a7974;
+    --mode-text: #2a78d6; --mode-json: #eb6834; --mode-schema: #1baf7a;
+    --good: #0b7a3e; --bad: #c0362c; --warn-bg: #fff4d6; --warn-ink: #6b4b00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-0: #121211; --surface-1: #1a1a19; --border: #33332f;
+      --text-primary: #ffffff; --text-secondary: #c3c2b7; --text-muted: #8f8e86;
+      --mode-text: #3987e5; --mode-json: #d95926; --mode-schema: #199e70;
+      --good: #4cc27f; --bad: #ff7a6e; --warn-bg: #3a2f10; --warn-ink: #f3d27a;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #121211; --surface-1: #1a1a19; --border: #33332f;
+    --text-primary: #ffffff; --text-secondary: #c3c2b7; --text-muted: #8f8e86;
+    --mode-text: #3987e5; --mode-json: #d95926; --mode-schema: #199e70;
+    --good: #4cc27f; --bad: #ff7a6e; --warn-bg: #3a2f10; --warn-ink: #f3d27a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface-0); color: var(--text-primary);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  h2 { font-size: 1.1rem; margin: 0 0 12px; }
+  .sub { color: var(--text-secondary); margin: 0 0 16px; }
+  .meta { color: var(--text-muted); font-size: 0.85rem; }
+  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin: 16px 0; }
+  .banner { background: var(--warn-bg); color: var(--warn-ink); border-radius: 10px; padding: 10px 14px; margin: 12px 0; font-weight: 600; }
+  .findings li { margin: 6px 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.88em;
+         background: var(--surface-0); padding: 1px 5px; border-radius: 4px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 8px 0 4px; }
+  label { font-size: 0.8rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px; }
+  select, input[type=search] { font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border);
+         background: var(--surface-1); color: var(--text-primary); min-width: 150px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .tile .mode { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .tile dl { display: grid; grid-template-columns: 1fr auto; margin: 0; gap: 2px 10px; font-size: 0.88rem; }
+  .tile dt { color: var(--text-secondary); } .tile dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 820px) { .grid2 { grid-template-columns: 1fr; } }
+  svg { width: 100%; height: auto; display: block; overflow: visible; }
+  svg text { fill: var(--text-secondary); font-size: 11px; }
+  .axis line, .axis path { stroke: var(--border); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-secondary); margin-top: 6px; }
+  .legend span { display: inline-flex; gap: 6px; align-items: center; }
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--text-secondary); font-weight: 600; position: sticky; top: 0; background: var(--surface-1); }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ok { color: var(--good); font-weight: 600; } .no { color: var(--bad); font-weight: 600; }
+  #tip { position: fixed; pointer-events: none; background: var(--surface-1); color: var(--text-primary);
+         border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 0.8rem;
+         box-shadow: 0 4px 16px rgba(0,0,0,.15); opacity: 0; transition: opacity .1s; max-width: 280px; z-index: 10; }
+  .empty { text-align: center; padding: 48px 16px; color: var(--text-secondary); }
+  .themebtn { float: right; font: inherit; font-size: 0.8rem; border: 1px solid var(--border); background: var(--surface-1);
+              color: var(--text-secondary); border-radius: 8px; padding: 4px 10px; cursor: pointer; }
+  .count { color: var(--text-muted); font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<main>
+  <button class="themebtn" id="themeBtn" type="button">Toggle theme</button>
+  <h1>Does forcing JSON make small local LLMs worse?</h1>
+  <p class="sub">Plain text vs JSON mode vs schema-constrained decoding on the same questions, models and hardware, plus a test of whether the models' stated confidence means anything. Everything runs offline via Ollama.</p>
+  <div id="app"></div>
+</main>
+<div id="tip" role="tooltip"></div>
+<script src="data/results.js"></script>
+<script>
+(() => {
+  "use strict";
+  const MODE_LABEL = { text: "Plain text", json: "JSON mode", schema: "Schema-constrained" };
+  const modeVar = m => `var(--mode-${m}, var(--text-muted))`;
+  const pct = x => x == null ? "–" : `${Math.round(x * 100)}%`;
+  const pp = x => `${x >= 0 ? "+" : ""}${(x * 100).toFixed(1)} pp`;
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`(.+?)`/g, "<code>$1</code>");
+  const app = document.getElementById("app");
+  const tip = document.getElementById("tip");
+
+  // theme toggle (per-viewer convenience only)
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById("themeBtn").onclick = () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  };
+
+  const R = window.BENCHMARK_RESULTS;
+  if (!R) {
+    app.innerHTML = `<div class="card empty"><h2>No results published yet</h2>
+      <p>Run the experiment on real hardware, then publish it:</p>
+      <p><code>python -m benchmark run</code> → <code>python -m benchmark analyze</code> → <code>python -m benchmark publish</code></p></div>`;
+    return;
+  }
+
+  const showTip = (evt, html) => { tip.innerHTML = html; tip.style.opacity = 1;
+    const x = Math.min(evt.clientX + 14, innerWidth - 300); tip.style.left = x + "px"; tip.style.top = (evt.clientY + 14) + "px"; };
+  const hideTip = () => { tip.style.opacity = 0; };
+  const bindTips = el => el.querySelectorAll("[data-tip]").forEach(n => {
+    n.addEventListener("mousemove", e => showTip(e, n.dataset.tip)); n.addEventListener("mouseleave", hideTip);
+  });
+
+  const env = R.meta.environment || {};
+  const state = { model: "ALL", mode: "ALL", outcome: "all", q: "" };
+
+  app.innerHTML = `
+    ${R.meta.simulated ? `<div class="banner">⚠ SIMULATED DATA: these numbers come from the test server and mean nothing.</div>` : ""}
+    <p class="meta">Run <code>${esc(R.meta.run_id)}</code> · ${R.models.length} models × ${R.modes.length} modes × ${R.n_questions} questions ·
+      ${esc(env.os)} · ${esc(env.total_ram_gb)} GB RAM · Ollama ${esc(env.ollama_version)} · generated ${esc(R.meta.generated_at)}</p>
+    <section class="card"><h2>Key findings</h2><ul class="findings">${R.findings.map(f => `<li>${md(f)}</li>`).join("")}</ul></section>
+    <section class="card">
+      <div class="controls">
+        <label>Model<select id="fModel"><option value="ALL">All models (pooled)</option>${R.models.map(m => `<option>${esc(m)}</option>`).join("")}</select></label>
+      </div>
+      <div class="tiles" id="tiles"></div>
+    </section>
+    <div class="grid2">
+      <section class="card"><h2>Accuracy change vs plain text</h2><div id="effect"></div>
+        <p class="count">Paired 95% bootstrap CI over the same questions. Filled dot = CI excludes 0 and McNemar p &lt; 0.05.</p></section>
+      <section class="card"><h2>Is stated confidence calibrated?</h2><div id="calib"></div>
+        <div class="legend" id="calibLegend"></div></section>
+    </div>
+    <section class="card"><h2>Results matrix</h2><div class="tablewrap" id="matrix"></div></section>
+    <section class="card"><h2>Individual answers</h2>
+      <div class="controls">
+        <label>Mode<select id="fMode"><option value="ALL">All modes</option>${R.modes.map(m => `<option value="${m}">${MODE_LABEL[m] || m}</option>`).join("")}</select></label>
+        <label>Outcome<select id="fOutcome">
+          <option value="all">All</option><option value="wrong">Wrong only</option><option value="hcw">Confidently wrong (≥ 0.9)</option>
+          <option value="invalid">Invalid format</option><option value="retried">Needed a retry</option></select></label>
+        <label>Search<input type="search" id="fSearch" placeholder="question or answer…"></label>
+        <span class="count" id="recCount"></span>
+      </div>
+      <div class="tablewrap" style="max-height:520px"><table id="records"></table></div>
+    </section>`;
+
+  const cellsFor = model => (model === "ALL" ? R.pooled : R.cells.filter(c => c.model === model));
+
+  function renderTiles() {
+    document.getElementById("tiles").innerHTML = cellsFor(state.model).map(c => `
+      <div class="tile"><div class="mode"><span class="swatch" style="background:${modeVar(c.mode)}"></span>${MODE_LABEL[c.mode] || c.mode}</div>
+      <dl><dt>Task accuracy</dt><dd>${pct(c.accuracy)}</dd>
+          <dt>End-to-end (valid + correct)</dt><dd>${pct(c.strict_accuracy)}</dd>
+          <dt>Valid on first try</dt><dd>${pct(c.parse_first_attempt)}</dd>
+          <dt>Needed a retry</dt><dd>${pct(c.retry_rate)}</dd>
+          <dt>Median latency</dt><dd>${(c.latency_median_ms / 1000).toFixed(2)} s</dd>
+          ${c.hallucination_rate != null ? `<dt>Hallucination (unanswerable)</dt><dd>${pct(c.hallucination_rate)}</dd>` : ""}</dl></div>`).join("");
+  }
+
+  function renderEffect() {
+    const scope = state.model;
+    const rows = R.mode_effects.filter(e => e.scope === scope && e.metric === "accuracy")
+      .concat(R.mode_effects.filter(e => e.scope === scope && e.metric === "strict_accuracy"));
+    const W = 480, rowH = 34, H = rows.length * rowH + 40, L = 190, Rt = W - 20;
+    const raw = Math.max(0.1, ...rows.map(e => Math.max(Math.abs(e.ci[0]), Math.abs(e.ci[1]))));
+    const lim = Math.ceil(raw * 20) / 20;  // round up to 5 pp
+    const x = v => L + (v + lim) / (2 * lim) * (Rt - L);
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Accuracy change by output mode">`;
+    [-lim, -lim / 2, 0, lim / 2, lim].forEach(t => {
+      const zero = Math.abs(t) < 1e-9;
+      s += `<line x1="${x(t)}" x2="${x(t)}" y1="10" y2="${H - 24}" stroke="${zero ? "var(--text-primary)" : "var(--border)"}" stroke-width="${zero ? 1.2 : 1}"/>
+            <text x="${x(t)}" y="${H - 8}" text-anchor="middle">${(t * 100).toFixed(0)}</text>`;
+    });
+    rows.forEach((e, i) => {
+      const y = 24 + i * rowH, c = modeVar(e.mode);
+      const label = `${MODE_LABEL[e.mode]} · ${e.metric === "accuracy" ? "task" : "end-to-end"}`;
+      const t = `<b>${esc(label)}</b><br>Δ ${pp(e.diff)}<br>95% CI [${pp(e.ci[0])}, ${pp(e.ci[1])}]<br>McNemar p = ${e.p_mcnemar.toFixed(3)}<br>n = ${e.n} pairs`;
+      s += `<text x="${L - 8}" y="${y + 4}" text-anchor="end">${esc(label)}</text>
+            <line x1="${x(e.ci[0])}" x2="${x(e.ci[1])}" y1="${y}" y2="${y}" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="${x(e.diff)}" cy="${y}" r="6" fill="${e.significant ? c : "var(--surface-1)"}" stroke="${c}" stroke-width="2.5"/>
+            <rect x="${L}" y="${y - rowH / 2}" width="${Rt - L}" height="${rowH}" fill="transparent" data-tip="${esc(t)}"/>`;
+    });
+    s += `<text x="${(L + Rt) / 2}" y="${H + 8}" text-anchor="middle">percentage points vs plain text</text></svg>`;
+    const el = document.getElementById("effect"); el.innerHTML = s; bindTips(el);
+  }
+
+  function renderCalib() {
+    const W = 460, H = 320, L = 44, B = 36, T = 10, Rt = W - 12;
+    const x = v => L + v * (Rt - L), y = v => H - B - v * (H - B - T);
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Calibration curve">`;
+    [0, .25, .5, .75, 1].forEach(t => {
+      s += `<line x1="${x(t)}" x2="${x(t)}" y1="${y(0)}" y2="${y(1)}" stroke="var(--border)"/><line x1="${x(0)}" x2="${x(1)}" y1="${y(t)}" y2="${y(t)}" stroke="var(--border)"/>
+            <text x="${x(t)}" y="${H - B + 16}" text-anchor="middle">${t}</text><text x="${L - 6}" y="${y(t) + 4}" text-anchor="end">${pct(t)}</text>`;
+    });
+    s += `<line x1="${x(0)}" y1="${y(0)}" x2="${x(1)}" y2="${y(1)}" stroke="var(--text-muted)" stroke-dasharray="4 4"/>`;
+    const legend = [];
+    R.modes.forEach(m => {
+      const key = state.model === "ALL" ? `mode:${m}` : null;
+      let rows;
+      if (key) rows = (R.calibration[key] || {}).reliability || [];
+      else rows = reliabilityFromRecords(R.records.filter(r => r.model === state.model && r.output_mode === m));
+      rows = rows.filter(r => r.n);
+      if (!rows.length) return;
+      const c = modeVar(m);
+      s += `<polyline fill="none" stroke="${c}" stroke-width="2" points="${rows.map(r => `${x(r.mean_confidence)},${y(r.accuracy)}`).join(" ")}"/>`;
+      rows.forEach(r => {
+        const t = `<b>${MODE_LABEL[m]}</b><br>confidence ${r.bin}<br>stated ${pct(r.mean_confidence)} · actual ${pct(r.accuracy)}<br>${r.n} answers`;
+        s += `<circle cx="${x(r.mean_confidence)}" cy="${y(r.accuracy)}" r="${4 + Math.sqrt(r.n)}" fill="${c}" stroke="var(--surface-1)" stroke-width="2" data-tip="${esc(t)}"/>`;
+      });
+      const cal = state.model === "ALL" ? R.calibration[key] : null;
+      legend.push(`<span><span class="swatch" style="background:${c}"></span>${MODE_LABEL[m]}${cal ? ` · ECE ${cal.ece.toFixed(2)}` : ""}</span>`);
+    });
+    s += `<text x="${(L + Rt) / 2}" y="${H - 4}" text-anchor="middle">stated confidence</text>
+          <text transform="translate(12 ${H / 2}) rotate(-90)" text-anchor="middle">observed accuracy</text></svg>`;
+    const el = document.getElementById("calib"); el.innerHTML = s; bindTips(el);
+    document.getElementById("calibLegend").innerHTML = legend.join("") + `<span>- - perfect calibration</span>`;
+  }
+
+  function reliabilityFromRecords(recs) {
+    const edges = [0, .5, .7, .8, .9, .95, 1.0000001];
+    return edges.slice(0, -1).map((lo, i) => {
+      const hi = edges[i + 1];
+      const inb = recs.filter(r => r.confidence != null && r.confidence >= lo && r.confidence < hi);
+      const n = inb.length;
+      return { bin: `${lo.toFixed(2)}-${Math.min(hi, 1).toFixed(2)}`, n,
+               mean_confidence: n ? inb.reduce((a, r) => a + r.confidence, 0) / n : null,
+               accuracy: n ? inb.filter(r => r.correct).length / n : null };
+    });
+  }
+
+  function renderMatrix() {
+    const rows = state.model === "ALL" ? R.cells : R.cells.filter(c => c.model === state.model);
+    document.getElementById("matrix").innerHTML = `<table><thead><tr><th>Model</th><th>Mode</th><th>Accuracy (95% CI)</th><th>End-to-end</th>
+      <th>Valid 1st try</th><th>Retry rate</th><th>Median latency</th><th>p95 latency</th><th>Hallucination</th></tr></thead><tbody>
+      ${rows.map(c => `<tr><td>${esc(c.model)}</td><td><span class="swatch" style="background:${modeVar(c.mode)}"></span> ${MODE_LABEL[c.mode] || c.mode}</td>
+        <td class="num"><b>${pct(c.accuracy)}</b> [${pct(c.accuracy_ci[0])}, ${pct(c.accuracy_ci[1])}]</td><td class="num">${pct(c.strict_accuracy)}</td>
+        <td class="num">${pct(c.parse_first_attempt)}</td><td class="num">${pct(c.retry_rate)}</td>
+        <td class="num">${(c.latency_median_ms / 1000).toFixed(2)} s</td><td class="num">${(c.latency_p95_ms / 1000).toFixed(2)} s</td>
+        <td class="num">${pct(c.hallucination_rate)}</td></tr>`).join("")}</tbody></table>`;
+  }
+
+  function renderRecords() {
+    const q = state.q.toLowerCase();
+    const recs = R.records.filter(r =>
+      (state.model === "ALL" || r.model === state.model) && (state.mode === "ALL" || r.output_mode === state.mode) &&
+      (state.outcome === "all" || (state.outcome === "wrong" && !r.correct) ||
+       (state.outcome === "hcw" && !r.correct && r.confidence != null && r.confidence >= 0.9) ||
+       (state.outcome === "invalid" && !r.parse_success) || (state.outcome === "retried" && r.retry_count > 0)) &&
+      (!q || (r.question + " " + r.predicted_answer + " " + r.expected_answer).toLowerCase().includes(q)));
+    document.getElementById("recCount").textContent = `${recs.length} of ${R.records.length} answers`;
+    document.getElementById("records").innerHTML = `<thead><tr><th>Model</th><th>Mode</th><th>Question</th><th>Expected</th><th>Model answer</th>
+      <th>Correct</th><th>Conf.</th><th>Latency</th><th>Retries</th></tr></thead><tbody>${recs.slice(0, 400).map(r => `<tr>
+      <td>${esc(r.model)}</td><td>${MODE_LABEL[r.output_mode] || r.output_mode}${r.parse_success ? "" : ' <span class="no">invalid</span>'}</td>
+      <td>${esc(r.question)}${r.answerable ? "" : ' <span class="count">(unanswerable)</span>'}</td><td>${esc(r.expected_answer)}</td>
+      <td>${esc(r.predicted_answer)}</td><td class="${r.correct ? "ok" : "no"}">${r.correct ? "✓ yes" : "✗ no"}</td>
+      <td class="num">${r.confidence == null ? "–" : r.confidence.toFixed(2)}</td><td class="num">${(r.latency_ms / 1000).toFixed(2)} s</td>
+      <td class="num">${r.retry_count}</td></tr>`).join("")}</tbody>`;
+  }
+
+  const renderAll = () => { renderTiles(); renderEffect(); renderCalib(); renderMatrix(); renderRecords(); };
+  document.getElementById("fModel").onchange = e => { state.model = e.target.value; renderAll(); };
+  document.getElementById("fMode").onchange = e => { state.mode = e.target.value; renderRecords(); };
+  document.getElementById("fOutcome").onchange = e => { state.outcome = e.target.value; renderRecords(); };
+  document.getElementById("fSearch").oninput = e => { state.q = e.target.value; renderRecords(); };
+  renderAll();
+})();
+</script>
+</body>
+</html>

@@ -1,92 +1,67 @@
-# privacy-first-llm-eval: Offline AI Assistant with Local Model Benchmarking
+# privacy-first-llm-eval
 
-A private document Q&A assistant that runs **100% on your own machine**. No API keys, no network calls, **$0 cost**. It answers questions about your PDFs and notes using open-weight LLMs served by **Ollama**, returns **Pydantic-validated JSON** with automatic self-repair retries, and includes a **reproducible benchmark** comparing Phi-3 (3.8B), Mistral 7B and Gemma 2 9B on accuracy, latency and RAM.
+**Does forcing JSON make small local LLMs worse, and do they know when they're wrong?**
 
-> **Why this exists:** sensitive documents like contracts, medical notes and internal policies can't be sent to a cloud API. This project shows which small local model gives the best accuracy / speed / memory trade-off on consumer hardware, and how to make its output reliable enough for downstream code.
+A controlled experiment on open-weight models running **fully offline** via Ollama. The same models answer the same 60 questions about a private document in three output modes: plain text, JSON mode and schema-constrained decoding. I measure what structure costs in accuracy, latency and failures, and whether the models' self-reported `confidence` predicts correctness.
 
-![CI](https://github.com/<your-user>/privacy-first-llm-eval/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/<your-user>/privacy-first-llm-eval/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-user>/privacy-first-llm-eval/actions)
+· **[Interactive results dashboard](https://<your-user>.github.io/privacy-first-llm-eval/)**
+· **[Full experiment report](docs/REPORT.md)** · [Design decisions](docs/DECISIONS.md)
+· Python · Ollama · Pydantic v2 · pandas · NumPy · psutil · Matplotlib · $0, no API keys
 
 ---
 
-## What I built
+## Key findings
 
-| Component | What it does | Production practice |
-|---|---|---|
-| **Document pipeline** | Loads PDF/TXT/MD with `pypdf`, splits into page-aware chunks | Chunks never cross pages, so every citation can be checked |
-| **Retrieval** | BM25 ranking, pure Python | No extra model in RAM; **100% recall@4** on the eval set (tested in CI) |
-| **LLM layer** | Typed wrapper over the Ollama client | Loopback-only guard (privacy), temperature 0 + fixed seed, explicit `num_ctx`, timeouts |
-| **Structured output** | `format="json"` + Pydantic `Answer` model | Validation errors are fed back to the model; up to **3 retries**; hallucinated page numbers rejected |
-| **Benchmark engine** | 30 questions × 3 models; psutil RAM sampling; timing; CSV | Warm-up excluded from timing, models unloaded between runs, rows checkpointed as they finish, environment captured |
-| **Scoring** | Weighted overall score + accuracy floor | Fixed normalisation bounds, so scores are comparable across runs |
-| **Tests / CI** | 20 tests, including an end-to-end run against a fake Ollama server | CI needs no GPU or model downloads |
+<!-- RESULTS:START -->
+_Run `20261002_000441` · 3 models × 3 output modes × 60 questions · Windows 10, 15.3 GB RAM, Ollama 0.34.2 · full report: [`docs/REPORT.md`](docs/REPORT.md)_
 
-The eval corpus (`data/sample/handbook.pdf`) is a **fictional** company handbook. Because the facts are invented, a model can't answer from pretraining memory. The benchmark measures **grounded** answering, not trivia recall.
+- **Task accuracy (all models pooled):** `json` vs plain text accuracy: **no detectable difference** at this sample size (+1.1 pp, 95% CI [-1.1 pp, +3.3 pp], McNemar p = 0.625, n = 180 pairs).
+- **Task accuracy (all models pooled):** `schema` vs plain text accuracy: **no detectable difference** at this sample size (+1.1 pp, 95% CI [-1.1 pp, +3.3 pp], McNemar p = 0.625, n = 180 pairs).
+- **End-to-end accuracy (wrong format counts as failure):** `json` mode strict accuracy is **higher** than plain text (+11.7 pp, 95% CI [+7.2 pp, +16.7 pp], McNemar p = 0.000, n = 180 pairs).
+- **End-to-end accuracy (wrong format counts as failure):** `schema` mode strict accuracy is **higher** than plain text (+11.7 pp, 95% CI [+7.2 pp, +16.7 pp], McNemar p = 0.000, n = 180 pairs).
+- **Format reliability (valid output under the same Pydantic contract):** `text` 88% first try → 88% final, `json` 100% first try → 100% final, `schema` 100% first try → 100% final.
+- **Latency vs plain text (median, cold prompt cache only):** phi3 `json` 1.16×, `schema` 1.26×; mistral `json` 0.93×, `schema` 1.01×; gemma2:9b `json` 1.34×, `schema` 1.28×. Warm-cache calls are excluded: json and schema prompts are identical, so the second one reuses Ollama's prompt cache and looks up to 2.8× faster than it is.
+- **Parser-strictness check:** accepting an unlabelled answer line raises plain-text validity from 88% to 97%; end-to-end accuracy then: `json` vs text +4.4 pp [+1.1 pp, +7.8 pp] (difference); `schema` vs text +4.4 pp [+1.1 pp, +7.8 pp] (difference).
+- **Confidence calibration (n = 536):** mean stated confidence 89% vs actual accuracy 95% (gap -5.6 pp); ECE 0.123 [0.096, 0.152]; AUROC 0.66 - stated confidence separates right from wrong answers to some degree.
+- **Calibration excluding refusals (n = 437):** confidence 100% vs accuracy 97%; ECE 0.027; AUROC 0.58.
+- **Confidence collapse:** 89% of answers report the same confidence value (1).
+- **High-confidence answers (≥ 0.9):** 476 answers, 96% correct; 18 were confidently wrong.
+- **Hallucination on unanswerable questions (n = 30 per mode, models pooled):** `text` 3%, `json` 3%, `schema` 3%.
+- **Sample-size caveat:** 60 questions per model and mode; per-cell accuracy 95% CIs are about ±6 pp wide. Mode comparisons are paired (same questions), which is more sensitive, but gaps whose CI includes zero are unresolved, not evidence of equality.
 
-## Architecture
+![Does forcing structured output change accuracy?](docs/assets/mode_effect.png)
 
-```mermaid
-flowchart LR
-    U[User / CLI] --> P[Python app]
-    subgraph Local machine - no network egress
-        P --> L[Document loader<br/>pypdf, page-aware chunks]
-        L --> R[BM25 retriever<br/>top-4 chunks]
-        R --> PR[Prompt builder<br/>context tagged by page]
-        PR --> O[Ollama server<br/>127.0.0.1:11434]
-        O --> M[(Local GGUF model<br/>phi3 / mistral / gemma2:9b)]
-        M --> O
-        O --> V{Pydantic validation<br/>Answer schema}
-        V -- invalid: errors fed back<br/>max 3 retries --> O
-        V -- valid --> A[JSON answer<br/>answer, confidence, source_page]
-    end
-    A --> U
-    B[Benchmark runner] -.->|psutil RSS sampling| O
-    B -.-> CSV[(raw_results.csv<br/>summary.md)]
-```
+| Model | Mode | Accuracy (95% CI) | End-to-end acc. | Valid 1st try | Retry rate | Median latency | Hallucination* |
+|---|---|---|---|---|---|---|---|
+| phi3 | `text` | **93%** [84%, 97%] | 65% | 68% | 0% | 0.86 s | 10% |
+| phi3 | `json` | **93%** [84%, 97%] | 93% | 100% | 0% | 1.00 s | 10% |
+| phi3 | `schema` | **93%** [84%, 97%] | 93% | 100% | 0% | 1.08 s | 10% |
+| mistral | `text` | **93%** [84%, 97%] | 90% | 97% | 0% | 1.23 s | 0% |
+| mistral | `json` | **95%** [86%, 98%] | 95% | 100% | 0% | 1.15 s | 0% |
+| mistral | `schema` | **95%** [86%, 98%] | 95% | 100% | 0% | 1.25 s | 0% |
+| gemma2:9b | `text` | **95%** [86%, 98%] | 95% | 100% | 0% | 4.65 s | 0% |
+| gemma2:9b | `json` | **97%** [89%, 99%] | 97% | 100% | 0% | 6.25 s | 0% |
+| gemma2:9b | `schema` | **97%** [89%, 99%] | 97% | 100% | 0% | 5.94 s | 0% |
 
-```
-User -> Python (load -> chunk -> BM25 retrieve -> prompt) -> Ollama (localhost) -> GGUF model
-     <- Pydantic validation <- JSON --(ValidationError? feed errors back, retry <= 3)--^
-```
+\* share of unanswerable questions answered anyway (lower is better).
 
-## Quick start
+<p><img src="docs/assets/calibration.png" width="49%"> <img src="docs/assets/tradeoff.png" width="49%"></p>
+<!-- RESULTS:END -->
 
-```bash
-# 1. Install Ollama and pull the models (Windows: scripts\setup_models.ps1)
-bash scripts/setup_models.sh
-#    or directly from Hugging Face, pinning the exact quantisation:
-ollama pull hf.co/bartowski/gemma-2-9b-it-GGUF:Q4_K_M
+### What it means
 
-# 2. Python environment
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements-dev.txt && pip install -e .
+*Written by hand from run `20261002_000441`. Every number traces to the generated block above or to [`docs/REPORT.md`](docs/REPORT.md).*
 
-# 3. Ask questions (plain text or validated JSON)
-python -m assistant.cli --doc data/sample/handbook.pdf "What is the hotel limit in Zurich?"
-python -m assistant.cli --doc data/sample/handbook.pdf --model phi3 --json "How fast must a SEV1 be answered?"
-python -m assistant.cli --doc path/to/your_notes.pdf          # interactive mode
+1. **Forcing JSON did not cost accuracy.** Across 540 answers, JSON and schema-constrained modes scored **+1.1 pp** versus plain text (95% CI [−1.1, +3.3]). The interval rules out a pooled drop larger than about 1 pp. For short, grounded answers from these three models, the "format restrictions hurt reasoning" effect reported for other tasks did not show up.
+2. **Structure buys reliability, but how much depends on your parser.** End-to-end accuracy was **+11.7 pp** for structured modes with a strict parser, and **+4.4 pp** [+1.1, +7.8] with a lenient one. Almost all plain-text failures came from Phi-3 (68% valid), mostly because it dropped the `Answer:` label.
+3. **Structure is not free in latency, and a benchmark artifact nearly said the opposite.** Measured naively, JSON looked **18% faster** than plain text. That was Ollama's prompt cache: the identical json and schema prompts reuse each other's processed prompt. On cold calls, structured output is **0.93–1.34×** the plain-text latency (slowest relative to text on Gemma 2). Future runs add a per-request ID to every prompt so no mode can reuse another's cache.
+4. **Self-reported confidence works like a switch, not a probability.** **475 of 540** answers say exactly 1.0, and **57 of the 58** answers at 0.0 are "Not found" refusals. Excluding refusals, confidence barely separates right from wrong (AUROC **0.58**). **18 answers were wrong at confidence ≥ 0.9**, including Phi-3's "33 days" (should be 30) in all three modes. The aggregate ECE of 0.027 (excluding refusals) looks excellent only because accuracy is high; it shouldn't be used to route answers to humans.
+5. **The same failures reproduce from the pilot**, in every mode: all models miss the two "inference from omission" questions (Hamburg hotel limit, SEV3 postmortem). Hallucination on unanswerable questions was low (**3%**, all from Phi-3).
 
-# 4. Benchmark (about 10-30 min on CPU)
-python -m benchmark.run_benchmark
-#    review results/raw_results_*.csv -> set manual_correct = 1/0 where the auto-grade is wrong
-python -m benchmark.summarize results/raw_results_<timestamp>.csv
+## Pilot study (v1 pipeline, JSON mode only)
 
-# 5. Tests (no Ollama needed)
-pytest -q
-```
-
-Example structured answer:
-
-```json
-{
-  "answer": "The hotel limit for Zurich is 220 euros per night.",
-  "confidence": 0.95,
-  "source_page": 3
-}
-```
-
-## Benchmark results
-
-Run `20261001_075634` on an RTX 4070 Laptop GPU (8 GB). Raw data: [`results/`](results/). Every row was reviewed by hand, and no auto-grade needed overriding. Memory is `ollama ps` allocated size (`--ram-source ollama_ps`), because on a GPU process RSS reads ~0.
+Before the controlled experiment, I ran the original benchmark brief: three models in JSON mode, 30 questions, run `20261001_075634`, on an RTX 4070 Laptop GPU (8 GB). Raw data is in [`results/`](results/). Every row was reviewed by hand, and no auto-grade needed overriding. Memory is the `ollama ps` allocated size, because on a GPU, process RSS reads ~0.
 
 | Model | Memory (Approx.) | Speed (Median Response) | Accuracy (30 Qs) | Overall Score |
 |---|---|---|---|---|
@@ -100,104 +75,166 @@ Run `20261001_075634` on an RTX 4070 Laptop GPU (8 GB). Raw data: [`results/`](r
 | Mistral 7B | 8.1 s | 36 | 90% | 100% | 100% |
 | Gemma 2 9B | 4.0 s | 20 | 93% | 100% | 100% |
 
-**What the errors show:** all three models failed the same two "hard" questions, and on both, every model answered *"Not found in the document."* Hamburg isn't in the hotel table, so the standard limit applies. SEV3 isn't on the postmortem list, so the answer is "no". Retrieval isn't the cause, because CI checks that the gold page is retrieved. The models stay literal instead of inferring from what the policy leaves out. That's a safe failure mode, but it caps accuracy on exception-style policy questions.
+**What the pilot showed, and why it led to this experiment:**
+- **Inference from omission fails.** All three models failed the same two "hard" questions, and on both, every model answered *"Not found in the document."* Hamburg isn't in the hotel table, so the standard limit applies. SEV3 isn't on the postmortem list, so the answer is "no". Retrieval isn't the cause, because CI checks that the gold page is retrieved. The models stay literal instead of inferring from what the policy leaves out.
+- **The confidence field looked meaningless.** Each model reported `confidence = 1.0` on 28 of 30 answers. Mistral was at 1.0 on 4 of its 6 wrong answers, and Phi-3 was at 1.0 on its one arithmetic error ("33 days" for 28 + 2). Gemma 2's two wrong answers were refusals at confidence 0.0. With 90 answers in one mode, that's a hypothesis, not a result. It became **RQ3**.
+- **JSON never failed** (100% valid on the first try). Was the retry machinery protecting anything, and did JSON cost accuracy that a 30-question JSON-only run couldn't see? That became **RQ1/RQ2**.
+- The pilot's model choice (Phi-3: within 3 pp of the most accurate model at 46% less memory and 2.5× lower latency) is recorded in [`docs/DECISIONS.md`](docs/DECISIONS.md#d0-pilot-recommendation-phi-3).
 
-### How the numbers are measured
+## Research questions
 
-- **Accuracy:** 30 standardised questions (`data/questions.jsonl`: 14 easy, 11 medium, 5 hard multi-step or negation questions). A keyword auto-grader gives a first pass; every row is then **reviewed by hand** (`manual_correct` column overrides it).
-- **Speed:** median end-to-end wall-clock latency per question, **including any JSON retries** (that's what a user actually waits). Model load time is measured separately and excluded. p95 and tokens/s are reported too.
-- **RAM:** peak summed RSS of all `ollama*` processes while answering, **minus the idle baseline**, sampled every 50 ms with `psutil`. `ollama ps` size/VRAM is logged alongside because on a GPU the weights live in VRAM and RSS under-reports (`--ram-source ollama_ps`).
-- **Overall score:**
+| # | Question | Why it matters |
+|---|---|---|
+| **RQ1** | Does enforcing structured output (JSON mode or schema-constrained decoding) change **task accuracy** compared with plain text? | Every production LLM feature parses model output. Prior work ("Let Me Speak Freely", Tam et al., 2024) reported that format restrictions can hurt reasoning in some settings. Does that hold for small local models on grounded Q&A? |
+| **RQ2** | Does structure buy **reliability**: fewer unparseable outputs, and at what latency cost? | A model that is 2 pp more accurate but breaks your parser 10% of the time is worse in practice. |
+| **RQ3** | Is the model's self-reported **confidence calibrated**? When it says 0.9, is it right about 90% of the time? | Teams use LLM "confidence" to route answers to humans. If it carries no signal, that routing is theatre. |
+| RQ4 | How often do models **answer questions the document can't answer**? | Hallucination under retrieval is the main failure mode of private-document assistants. |
 
-```
-overall = 10 × (0.6 × accuracy + 0.2 × speed_score + 0.2 × ram_score)
+## Experimental setup
 
-speed_score = clamp((8.0 − median_latency_s) / (8.0 − 1.0), 0, 1)   # 1 s → 1.0, ≥8 s → 0.0
-ram_score   = clamp((10.0 − ram_gb) / (10.0 − 2.0), 0, 1)           # 2 GB → 1.0, ≥10 GB → 0.0
-```
-
-Worked example: accuracy 83%, 2.1 s, 4.8 GB → `10 × (0.6×0.83 + 0.2×0.843 + 0.2×0.65) = 7.97`.
-
-Fixed ("absolute") bounds are the default because min-max ("relative") normalisation always gives the worst model 0 and changes every score when you add a model. `--normalization relative` is available.
-
-## Decision File
-
-Every decision below states what I chose, what I rejected, and the evidence.
-
-### D1: Recommended model: Phi-3 (3.8B)
-
-**Decision:** ship Phi-3 as the default model.
-
-**Why accuracy is a gate and not just a weight:** a weighted sum alone rewards small models heavily. A model that gets 1 in 4 answers wrong could still top the table if it's fast and small. For a document assistant, a wrong answer stated confidently is worse than a slow one. So the recommendation rule is: **highest overall score among models with ≥ 80% accuracy** (`--min-accuracy 0.8`).
-
-**Going in, I expected Mistral 7B to win, and the data said otherwise.** Phi-3 clears the gate comfortably at 90%, so it wins on the overall score:
-- **Accuracy:** 90%, only **3 pp** (one question out of 30) behind Gemma 2 9B, well inside the ±~8 pp noise of a 30-question set. It beat Mistral by **10 pp**.
-- **Memory:** **3.5 GB**, **46% less** than Gemma's 6.6 GB. It's the only one of the three that fits on a 4 GB GPU, and it leaves room on an 8 GB laptop.
-- **Latency:** **~1.1 s** median, **2.5× faster** than Gemma (2.6 s) and **68 tok/s** vs 20.
-- **Structured output:** 100% valid JSON on the first try, the same as the larger models, so the retry loop never fired.
-
-**The cost of choosing Phi-3, stated plainly:**
-- **Citations are weaker:** **77%** correct source pages vs 93% for Gemma. When it gets the answer right, it sometimes cites the wrong page.
-- **Its tail latency is worse:** p95 **6.4 s** vs 4.0 s for Gemma. A few questions produce long answers.
-- **It made the only arithmetic error** in the run: 28 + 2 Focus Days → "33 days".
-
-**When I would choose differently:**
-- Choose **Gemma 2 9B** when citations must be verifiable (legal, medical, audit), or when consistent response time matters more than average speed. It needs about 7 GB of GPU or system memory.
-- Choose **Mistral 7B**: not on this evidence. It's slower and larger than Phi-3 and less accurate than both alternatives, though its 90% citation accuracy is close to Gemma's.
-
-### D2: Ollama over llama.cpp / vLLM / HF Transformers
-Ollama provides one binary with an OpenAI-style REST API, model management, automatic CPU/GPU offload, and GGUF quantisations. **vLLM** targets high-throughput GPU serving and is overkill for one user on a laptop. **Transformers** in fp16 would need about 2× Q4 memory for a 7B model (~14 GB), which rules out a 16 GB laptop. Raw **llama.cpp** gives more control but you manage templates and builds yourself.
-
-### D3: 4-bit quantisation (Q4_K_M / Ollama defaults)
-Q4 cuts memory about 4× vs fp16 with a small quality loss on Q&A tasks. All three models use the same quantisation family, so the comparison is fair. For a controlled experiment, pin exact quants from Hugging Face (`hf.co/bartowski/...:Q4_K_M`).
-
-### D4: BM25 retrieval instead of embeddings
-- An embedding model would add a **second model in RAM** and distort the RAM benchmark.
-- Handbook-style questions hinge on exact terms (names, numbers, policy keywords), which is where lexical search is strongest.
-- It's deterministic and dependency-free.
-- CI checks **recall@4 = 100%** on the eval set, so retrieval isn't a confounder and the benchmark isolates the LLM.
-- **Known limit:** synonyms ("laptop" vs "device") rank lower; recall@1 is 93%. Upgrade path: hybrid BM25 + `nomic-embed-text` via `ollama.embed`.
-
-### D5: `format="json"` + Pydantic + retries (vs schema-constrained decoding)
-`format="json"` guarantees syntactically valid JSON but **not the right shape**: models add keys, give confidence as `85` instead of `0.85`, or cite pages that don't exist. Pydantic catches all of these (`extra="forbid"`, `0 ≤ confidence ≤ 1`, `source_page ≤ page count`). The exact error list goes back to the model as a follow-up turn, up to 3 times. Ollama can also constrain decoding to the JSON schema (`--format-mode schema`). That removes most shape errors, but semantic checks (does this page exist?) still need validation. Both modes are benchmarkable.
-
-### D6: Single user turn, temperature 0, fixed seed, explicit context
-Gemma 2's chat template has no system role, so every model gets the same single-turn prompt (fairness). `temperature=0` + `seed=42` make answers reproducible. `num_ctx=4096` is set explicitly because Ollama's default window is small enough to silently truncate the retrieved context.
-
-### D7: Offline by construction
-`Settings.assert_offline()` refuses any non-loopback `OLLAMA_HOST` unless it's explicitly overridden. The app makes no other network calls; once the models are pulled you can disconnect the network entirely.
-
-## Test environment
-
-Captured automatically in `results/environment_<timestamp>.json`.
-
-| | |
+| Variable type | Variables |
 |---|---|
-| Machine | ASUS ROG Zephyrus G14 (GA403UI) |
-| CPU | AMD Ryzen 7 8845HS (8 physical / 16 logical cores) |
-| RAM | **16 GB** |
-| GPU | NVIDIA GeForce RTX 4070 Laptop GPU, 8 GB VRAM (all models offloaded; Gemma 2 9B partially, 5.3 of 6.6 GB) |
-| OS | Windows 11 Pro |
-| Python | 3.11.9 |
-| Ollama | `0.34.2` |
-| Models | `phi3`, `mistral`, `gemma2:9b` (Q4 GGUF) |
-| Settings | temperature 0, seed 42, num_ctx 4096, top-4 chunks, format=json, 3 retries |
-| Dataset | 30 questions over a 6-page fictional handbook |
+| **Independent** | Model (3 per group) × **output mode** (`text`, `json`, `schema`) |
+| **Dependent** | Task accuracy · end-to-end accuracy (correct **and** valid format) · first-try format validity · retries · latency (median, p95) · output tokens · stated confidence · hallucination rate · page-citation accuracy · peak RAM |
+| **Controlled** | Same document, questions, retrieved context (BM25 top-4), instructions, requested fields, temperature 0, seed 42, `num_ctx` 4096, max 256 output tokens, hardware, Ollama version, grading rules |
 
-**Reproducibility notes:** close other heavy apps, run on AC power, and do one full run before the recorded run (disk cache). Absolute latency depends on hardware; the **ranking** between models is what transfers.
+**The three modes differ only in encoding.** Every mode asks for the same three fields (`answer`, `confidence`, `source_page`) with identical instructions:
 
-## Limitations and next steps
-- 30 questions give a ±~8 pp confidence interval on accuracy. Extend to 100+ for stronger claims.
-- Grading is keyword + human. An LLM-as-judge (run locally) would scale, but it needs its own validation.
-- There are no unanswerable questions yet. Adding them would measure hallucination refusal rate. That matters here because all models already lean towards "Not found" on inference questions (see above). Measuring both sides would show whether that's caution or just weak reasoning.
-- Latencies were measured on a GPU. On a CPU-only laptop, absolute times will be several times slower and Gemma 2 9B will be hit hardest. Re-run with the default `--ram-source psutil` there.
-- Next: streaming responses, a hybrid retriever, and a small Streamlit UI.
+| Mode | Model is asked for | Decoding constraint | Validation | Retries |
+|---|---|---|---|---|
+| `text` | three labelled lines (`Answer:` / `Confidence:` / `Source page:`) | none | same Pydantic contract, after parsing | none: what a free-text pipeline gets |
+| `json` | a JSON object | Ollama `format="json"` (valid JSON, any shape) | Pydantic `Answer` (extra keys forbidden, 0 ≤ confidence ≤ 1, page must exist) | up to 3, validation errors fed back |
+| `schema` | a JSON object | Ollama `format=<JSON Schema>` (grammar-constrained) | same | up to 3 |
 
-## Project structure
+**Dataset:** a 6-page **fictional** company handbook (`data/sample/handbook.pdf`). The facts are invented, so models can't answer from pretraining; this measures grounding, not memory. It has **60 questions**: 50 answerable (24 easy, 19 medium, 7 hard multi-step or negation) and **10 unanswerable** (the correct behaviour is to decline). Retrieval is checked in CI: the gold page is in the top-4 retrieved chunks for **100%** of answerable questions, so retrieval doesn't confound the comparison.
+
+**Run order is controlled.** Within each model, questions are shuffled and the three modes run in random order **per question** (seeded). Thermal throttling or background load therefore can't line up with one mode and pass for a mode effect.
+
+## Models
+
+`configs/models.json` defines three groups. Tags were checked on ollama.com/library on 2026-10-01; exact digests, parameter counts and quantization levels are recorded automatically for every run.
+
+| Group | Models (Ollama tag) | Purpose |
+|---|---|---|
+| `baseline_2024` *(default; same models as the pilot)* | `phi3` (3.8B) · `mistral` (7.2B) · `gemma2:9b` (9.2B) | the original brief |
+| `current_2026` | `phi4-mini:3.8b` · `qwen3:8b` · `gemma4:12b` | size-matched 2024-vs-2026 comparison (reasoning models run with `think=false` so the output budget is equal) |
+| `quantization_phi3` | `phi3:3.8b-mini-4k-instruct-` `q2_K` / `q4_K_M` / `q8_0` | quality vs memory |
+
+## Evaluation methodology
+
+- **Grading:** the auto-grader is identical for every mode. For answerable questions, every keyword group must appear as a whole word or phrase, and a refusal counts as wrong. For unanswerable questions, a refusal is correct and anything else counts as a hallucination. Every answer is then exported to `grading.csv` for **human review**; a `manual_correct` value overrides the auto-grade, and the number of overrides is reported.
+- **Two accuracy metrics:** *task accuracy* grades the content even if the format broke, which answers "did structure make it dumber?". *End-to-end accuracy* also requires valid output, which answers "what does my application actually receive?".
+- **Statistics (chosen per metric):**
+  - **Accuracy:** Wilson 95% intervals.
+  - **Mode differences:** a **paired bootstrap** over identical questions (5,000 resamples), plus **McNemar's exact test**. A difference is reported only if the CI excludes 0 *and* p < 0.05; otherwise the finding says "no detectable difference at this sample size".
+  - **Latency:** median with a bootstrap CI, plus p95.
+- **Calibration:**
+  - a reliability diagram;
+  - **ECE**, with a bootstrap CI;
+  - Brier score;
+  - over/under-confidence gap;
+  - **AUROC**: does confidence rank right answers above wrong ones? (0.5 = no signal);
+  - a *confidence-collapse* check: the share of answers that state the same value;
+  - every **confidently wrong** answer (confidence ≥ 0.9, incorrect).
+- **Latency** is wall-clock per question **including retries**, compared on **cold prompt-cache calls only** (see finding 3). Model load time is measured separately and excluded.
+- **RAM** is the peak resident memory of the Ollama processes, sampled every 50 ms, minus the idle baseline. `ollama ps` size and VRAM are also logged.
+
+## Results
+
+All tables, charts and the dashboard are generated from `results/<run_id>/records.jsonl` (one JSON line per answer: model digest, mode, prediction, confidence, latency, tokens, retries, parse status, errors; `null` where a value doesn't exist). The **[full report](docs/REPORT.md)** contains the complete matrix, the paired tests for every model, the calibration table and the confidently wrong answers. The original portfolio summary (RAM / speed / accuracy / weighted overall score) is in the report too.
+
+## Interactive dashboard
+
+`docs/index.html` is a dependency-free static page, published via GitHub Pages from `/docs`. It lets you:
+- filter by model;
+- compare modes: accuracy, end-to-end accuracy, validity, retries, latency and hallucination;
+- explore the mode-effect and calibration charts, with hover details;
+- browse all individual answers, with filters for *wrong*, *confidently wrong*, *invalid format* and *needed a retry*.
+
+To view it locally, open `docs/index.html` in a browser.
+
+## Reproduce the experiments
+
+```powershell
+# 1. Models (about 12 GB download for the baseline group)
+ollama pull phi3; ollama pull mistral; ollama pull gemma2:9b
+
+# 2. Environment
+python -m venv .venv; .\.venv\Scripts\Activate.ps1      # macOS/Linux: source .venv/bin/activate
+pip install -r requirements-dev.txt; pip install -e .
+pytest -q                                                 # simulated end-to-end tests, no models needed
+
+# 3. Experiment (3 models x 3 modes x 60 questions = 540 answers: ~20-40 min on an RTX 4070 laptop, 1-2 h CPU-only)
+python -m benchmark models                                # what's pulled, what's missing
+python -m benchmark run                                   # interrupted? python -m benchmark run --resume <run_id>
+
+# 4. Human review, then analysis
+#    open results/<run_id>/grading.csv, set manual_correct = 1/0 where the auto-grade is wrong
+python -m benchmark analyze                               # stats + charts + results/<run_id>/report.md
+python -m benchmark publish                               # README findings, docs/REPORT.md, dashboard data
+
+# Optional experiments
+python -m benchmark run --model-group current_2026
+python -m benchmark run --model-group quantization_phi3 --modes json
 ```
-src/assistant/     config, documents, retrieval, llm, schemas, structured (retry), assistant, cli
-src/benchmark/     run_benchmark, summarize, scoring, grading, memory (psutil)
-data/              handbook.pdf (fictional corpus) + questions.jsonl (30 Qs with gold page)
-scripts/           setup_models.sh / .ps1, build_sample_pdf.py
-tests/             unit tests + end-to-end test against fake_ollama.py
+
+## Privacy verification
+
+"Offline" is tested, not just claimed:
+1. `python -m benchmark run` installs an **egress guard** by default: any socket connection from the Python process to a non-loopback address raises `EgressBlocked`.
+2. A CI test (`test_privacy_no_egress_during_full_run`) runs the full pipeline with the guard on and checks that outbound connections are blocked while the run completes against a loopback server.
+3. For the Ollama server process itself, the manual OS-level procedure is in [`docs/PRIVACY.md`](docs/PRIVACY.md) (disconnect from the network or add a firewall rule, then run).
+
+**Scope of the claim:** the guard proves *this application* sends nothing off-machine. It does not audit Ollama's own binary; the OS-level procedure covers that.
+
+## Project architecture
+
+```mermaid
+flowchart LR
+    Q[questions.jsonl<br/>60 Qs, 10 unanswerable] --> RUN
+    D[handbook.pdf] --> A
+    subgraph Local machine - egress guard on
+        RUN[benchmark.runner<br/>model x mode x question<br/>seeded interleaving] --> A[assistant<br/>pypdf, BM25 top-4, prompt]
+        A -->|text / json / schema| O[Ollama 127.0.0.1:11434]
+        O --> M[(GGUF model)]
+        A --> V{Pydantic Answer<br/>same contract for all modes}
+        V -- invalid json/schema --> R[error feedback retry, max 3] --> O
+        RUN --> J[(records.jsonl<br/>+ environment.json)]
+        J --> G[grading.csv<br/>human review]
+        G --> S[analysis<br/>Wilson, paired bootstrap, McNemar,<br/>ECE, Brier, AUROC]
+        S --> C[charts + report.md]
+        C --> P[publish<br/>README block, docs/ dashboard]
+    end
 ```
+
+```
+src/assistant/   config · documents (pypdf) · retrieval (BM25) · llm (Ollama wrapper) · schemas (Pydantic)
+                 structured (validation + retry) · textparse · assistant (modes) · cli
+src/benchmark/   runner · records · grading · stats · calibration · analysis · charts · report · egress
+                 memory (psutil) · scoring · __main__ (CLI: run / models / analyze / publish)
+configs/         models.json (model groups, verified tags)
+data/            handbook.pdf + questions.jsonl
+docs/            index.html (dashboard) · REPORT.md · assets/ (charts) · data/results.js · PRIVACY.md
+tests/           unit tests + end-to-end tests against tests/fake_ollama.py (simulated, CI only)
+```
+
+Simulated data can't leak into results by accident: the test server reports `ollama_version = "SIMULATED"`, and `publish` refuses such runs.
+
+## Limitations
+
+- **One document, one domain, 60 questions.** Per-cell accuracy intervals are roughly ±11 pp. Only effects of about 10 pp or more will be resolvable per model; pooling across models and the paired design help, but small effects will remain unresolved. That is reported as unresolved, not as "no effect".
+- **Keyword auto-grading** can be lenient or strict on paraphrases, which is why the human review pass exists. Answer length is recorded per mode, so verbosity bias can be checked.
+- **Prompt caching in run `20261002_000441`:** about half the json/schema calls were warm-cache. They are excluded from latency (each cell keeps about 30 cold calls), and new runs prevent this with a per-request ID.
+- **Temperature 0, single run:** this measures each model's greedy behaviour, not its output distribution.
+- **Plain-text mode is asked for labelled lines.** That is a light structure in itself; truly free-form answers would be a fourth condition.
+- **Hardware-specific latency:** absolute latency depends on the machine (recorded in `environment.json`); the ranking between modes is what transfers.
+- **Self-reported confidence** is a verbalised number, not token log-probabilities; the calibration result applies to that number only.
+- **Confidence on refusals is ambiguous.** In the pilot, some models reported 0.0 on "Not found" answers, which reads like "confidence an answer exists" rather than "confidence I am right". Calibration is therefore reported both overall and **excluding refusals**.
+
+## Future work
+
+- Run the size-matched `current_2026` group and the quantization sweep.
+- Add a fourth, fully free-form text condition.
+- Add an LLM-as-judge grader (run locally) and validate it against the human grades with Cohen's κ.
+- Use multiple documents and domains, plus German-language questions.
+- Compare the verbalised confidence with token log-probability confidence.

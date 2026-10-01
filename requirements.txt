@@ -1,6 +1,8 @@
 ollama>=0.4,<1.0
 pydantic>=2.7,<3.0
 pypdf>=3.17
+numpy>=1.26
 pandas>=2.1
 psutil>=5.9
 tabulate>=0.9
+matplotlib>=3.8

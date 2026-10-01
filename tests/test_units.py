@@ -96,7 +96,7 @@ def test_bm25_recall_at_k_on_eval_set():
     the gold page has to be inside the top-k chunks the model sees."""
     idx = BM25Index(chunk_pages(load_document(PDF)))
     with open("data/questions.jsonl", encoding="utf-8") as fh:
-        qs = [json.loads(line) for line in fh]
+        qs = [q for line in fh if (q := json.loads(line)).get("answerable", True)]
     k = Settings().top_k_chunks
     hits = [q["expected_page"] in {c.page for c, _ in idx.search(q["question"], k=k)} for q in qs]
     assert sum(hits) / len(qs) == 1.0

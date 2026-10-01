@@ -1,0 +1,82 @@
+{
+  "run_id": "20261002_000441",
+  "started_at": "2026-10-01T21:04:41+00:00",
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU, 8188 MiB",
+    "os": "Windows 10",
+    "machine": "AMD64",
+    "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "physical_cores": 8,
+    "logical_cores": 16,
+    "total_ram_gb": 15.3,
+    "python": "3.11.9",
+    "ollama_version": "0.34.2"
+  },
+  "document": "handbook.pdf",
+  "questions_file": "questions.jsonl",
+  "n_questions": 60,
+  "modes": [
+    "text",
+    "json",
+    "schema"
+  ],
+  "seed": 42,
+  "settings": {
+    "temperature": 0.0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "max_answer_tokens": 256,
+    "top_k_chunks": 4,
+    "max_retries": 3
+  },
+  "models": {
+    "phi3": {
+      "tag": "phi3:latest",
+      "digest": "4f222292793889a9a40a020799cfd28d53f3e01af25d48e06c5e708610fc47e9",
+      "size_gb": 2.03,
+      "family": "phi3",
+      "parameter_size": "3.8B",
+      "quantization": "Q4_0",
+      "format": "gguf",
+      "load_s": 4.54,
+      "ollama_ps_size_gb": 3.54,
+      "ollama_ps_vram_gb": 3.54,
+      "baseline_rss_gb": 0.03
+    },
+    "mistral": {
+      "tag": "mistral:latest",
+      "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+      "size_gb": 4.07,
+      "family": "llama",
+      "parameter_size": "7.2B",
+      "quantization": "Q4_K_M",
+      "format": "gguf",
+      "load_s": 7.08,
+      "ollama_ps_size_gb": 4.61,
+      "ollama_ps_vram_gb": 4.61,
+      "baseline_rss_gb": 0.02
+    },
+    "gemma2:9b": {
+      "tag": "gemma2:9b",
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "size_gb": 5.07,
+      "family": "gemma2",
+      "parameter_size": "9.2B",
+      "quantization": "Q4_0",
+      "format": "gguf",
+      "load_s": 14.05,
+      "ollama_ps_size_gb": 6.59,
+      "ollama_ps_vram_gb": 5.26,
+      "baseline_rss_gb": 0.03
+    }
+  },
+  "model_overrides": {
+    "qwen3:8b": {
+      "think": false
+    },
+    "gemma4:12b": {
+      "think": false
+    }
+  },
+  "finished_at": "2026-10-01T21:26:31+00:00"
+}
