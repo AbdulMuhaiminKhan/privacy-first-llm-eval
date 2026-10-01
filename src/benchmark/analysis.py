@@ -212,7 +212,7 @@ def _overall_scores(cells: list[dict], prefer_mode: str) -> list[dict]:
 def _slim(df: pd.DataFrame) -> list[dict]:
     cols = ["model", "output_mode", "question_id", "answerable", "question", "expected_answer",
             "predicted_answer", "correct", "correct_strict", "confidence", "latency_ms", "retry_count",
-            "parse_success", "first_attempt_parse_success"]  # fmt: skip
+            "parse_success", "first_attempt_parse_success", "prompt_cache_cold"]  # fmt: skip
     out = df[cols].copy()
     out["latency_ms"] = out["latency_ms"].round(0)
     return out.replace({np.nan: None}).to_dict("records")

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this benchmark or its findings, please cite it."
+title: "privacy-first-llm-eval: Does forcing JSON make small local LLMs worse?"
+authors:
+  - family-names: "Khan"
+    given-names: "Abdul Muhaimin"
+version: "1.1.0"
+date-released: "2026-10-02"
+license: MIT
+repository-code: "https://github.com/AbdulMuhaiminKhan/privacy-first-llm-eval"
+keywords: [llm, evaluation, structured-output, calibration, ollama, local-llm, privacy]

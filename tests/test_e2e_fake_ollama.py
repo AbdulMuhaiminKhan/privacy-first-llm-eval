@@ -98,7 +98,7 @@ def test_analysis_charts_and_publish_guard(fake_host, workdir):
     a = out["analysis"]
     assert a["meta"]["simulated"] is True
     assert {c["mode"] for c in a["cells"]} == {"text", "json", "schema"}
-    assert len(out["charts"]) == 6 and all(p.stat().st_size > 10_000 for p in out["charts"].values())
+    assert len(out["charts"]) == 8 and all(p.stat().st_size > 10_000 for p in out["charts"].values())
     assert any("Hallucination" in f for f in a["findings"])
     assert a["calibration"]["pooled"]["n"] > 0
 

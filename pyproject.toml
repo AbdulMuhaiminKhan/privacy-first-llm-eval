@@ -4,13 +4,27 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "privacy-first-llm-eval"
-version = "1.0.0"
+version = "1.1.0"
 description = "Controlled offline experiment: does structured output change small-LLM accuracy, and is self-reported confidence calibrated?"
 requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Abdul Muhaimin Khan", email = "abdul.muhaimin.khan.official@gmail.com" }]
+keywords = ["llm", "evaluation", "structured-output", "calibration", "ollama", "local-llm", "privacy", "pydantic"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dynamic = ["dependencies"]
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
+
+[project.urls]
+Homepage = "https://github.com/AbdulMuhaiminKhan/privacy-first-llm-eval"
+Dashboard = "https://abdulmuhaiminkhan.github.io/privacy-first-llm-eval/"
+Report = "https://github.com/AbdulMuhaiminKhan/privacy-first-llm-eval/blob/main/docs/REPORT.md"
 
 [project.scripts]
 offline-assistant = "assistant.cli:main"

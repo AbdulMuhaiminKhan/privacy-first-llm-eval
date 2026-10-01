@@ -4,14 +4,27 @@
 
 A controlled experiment on open-weight models running **fully offline** via Ollama. The same models answer the same 60 questions about a private document in three output modes: plain text, JSON mode and schema-constrained decoding. I measure what structure costs in accuracy, latency and failures, and whether the models' self-reported `confidence` predicts correctness.
 
-[![CI](https://github.com/<your-user>/privacy-first-llm-eval/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-user>/privacy-first-llm-eval/actions)
-· **[Interactive results dashboard](https://<your-user>.github.io/privacy-first-llm-eval/)**
-· **[Full experiment report](docs/REPORT.md)** · [Design decisions](docs/DECISIONS.md)
-· Python · Ollama · Pydantic v2 · pandas · NumPy · psutil · Matplotlib · $0, no API keys
+[![CI](https://github.com/AbdulMuhaiminKhan/privacy-first-llm-eval/actions/workflows/ci.yml/badge.svg)](https://github.com/AbdulMuhaiminKhan/privacy-first-llm-eval/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![Runs offline](https://img.shields.io/badge/runs-100%25%20offline-1baf7a)
+![Cost](https://img.shields.io/badge/API%20cost-%240-1baf7a)
+[![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
----
+**[Interactive dashboard](https://abdulmuhaiminkhan.github.io/privacy-first-llm-eval/)** · **[Full report](docs/REPORT.md)** · [Design decisions](docs/DECISIONS.md) · [Privacy verification](docs/PRIVACY.md)
+
+![Summary: no accuracy cost from JSON, confidence is a switch, prompt-cache latency trap](docs/assets/hero.png)
 
 ## Key findings
+
+*Written by hand from run `20261002_000441`. Every number traces to the generated block below or to [`docs/REPORT.md`](docs/REPORT.md).*
+
+1. **Forcing JSON did not cost accuracy.** Across 540 answers, JSON and schema-constrained modes scored **+1.1 pp** versus plain text (95% CI [−1.1, +3.3]). The interval rules out a pooled drop larger than about 1 pp. For short, grounded answers from these three models, the "format restrictions hurt reasoning" effect reported for other tasks did not show up.
+2. **Structure buys reliability, but how much depends on your parser.** End-to-end accuracy was **+11.7 pp** for structured modes with a strict parser, and **+4.4 pp** [+1.1, +7.8] with a lenient one. Almost all plain-text failures came from Phi-3 (68% valid), mostly because it dropped the `Answer:` label.
+3. **Structure is not free in latency, and a benchmark artifact nearly said the opposite.** Measured naively, JSON looked **18% faster** than plain text. That was Ollama's prompt cache: the identical json and schema prompts reuse each other's processed prompt. On cold calls, structured output is **0.93–1.34×** the plain-text latency (slowest relative to text on Gemma 2). Future runs add a per-request ID to every prompt so no mode can reuse another's cache.
+4. **Self-reported confidence works like a switch, not a probability.** **475 of 540** answers say exactly 1.0, and **57 of the 58** answers at 0.0 are "Not found" refusals. Excluding refusals, confidence barely separates right from wrong (AUROC **0.58**). **18 answers were wrong at confidence ≥ 0.9**, including Phi-3's "33 days" (should be 30) in all three modes. The aggregate ECE of 0.027 (excluding refusals) looks excellent only because accuracy is high; it shouldn't be used to route answers to humans.
+5. **The same failures reproduce from the pilot**, in every mode: all models miss the two "inference from omission" questions (Hamburg hotel limit, SEV3 postmortem). Hallucination on unanswerable questions was low (**3%**, all from Phi-3).
+
+## Detailed results (generated from the data)
 
 <!-- RESULTS:START -->
 _Run `20261002_000441` · 3 models × 3 output modes × 60 questions · Windows 10, 15.3 GB RAM, Ollama 0.34.2 · full report: [`docs/REPORT.md`](docs/REPORT.md)_
@@ -48,16 +61,6 @@ _Run `20261002_000441` · 3 models × 3 output modes × 60 questions · Windows 
 
 <p><img src="docs/assets/calibration.png" width="49%"> <img src="docs/assets/tradeoff.png" width="49%"></p>
 <!-- RESULTS:END -->
-
-### What it means
-
-*Written by hand from run `20261002_000441`. Every number traces to the generated block above or to [`docs/REPORT.md`](docs/REPORT.md).*
-
-1. **Forcing JSON did not cost accuracy.** Across 540 answers, JSON and schema-constrained modes scored **+1.1 pp** versus plain text (95% CI [−1.1, +3.3]). The interval rules out a pooled drop larger than about 1 pp. For short, grounded answers from these three models, the "format restrictions hurt reasoning" effect reported for other tasks did not show up.
-2. **Structure buys reliability, but how much depends on your parser.** End-to-end accuracy was **+11.7 pp** for structured modes with a strict parser, and **+4.4 pp** [+1.1, +7.8] with a lenient one. Almost all plain-text failures came from Phi-3 (68% valid), mostly because it dropped the `Answer:` label.
-3. **Structure is not free in latency, and a benchmark artifact nearly said the opposite.** Measured naively, JSON looked **18% faster** than plain text. That was Ollama's prompt cache: the identical json and schema prompts reuse each other's processed prompt. On cold calls, structured output is **0.93–1.34×** the plain-text latency (slowest relative to text on Gemma 2). Future runs add a per-request ID to every prompt so no mode can reuse another's cache.
-4. **Self-reported confidence works like a switch, not a probability.** **475 of 540** answers say exactly 1.0, and **57 of the 58** answers at 0.0 are "Not found" refusals. Excluding refusals, confidence barely separates right from wrong (AUROC **0.58**). **18 answers were wrong at confidence ≥ 0.9**, including Phi-3's "33 days" (should be 30) in all three modes. The aggregate ECE of 0.027 (excluding refusals) looks excellent only because accuracy is high; it shouldn't be used to route answers to humans.
-5. **The same failures reproduce from the pilot**, in every mode: all models miss the two "inference from omission" questions (Hamburg hotel limit, SEV3 postmortem). Hallucination on unanswerable questions was low (**3%**, all from Phi-3).
 
 ## Pilot study (v1 pipeline, JSON mode only)
 
@@ -189,6 +192,8 @@ python -m benchmark run --model-group quantization_phi3 --modes json
 
 ## Project architecture
 
+**Stack:** Python 3.10+ · Ollama · Pydantic v2 · pypdf · NumPy · pandas · Matplotlib · psutil · pytest · GitHub Actions. No API keys, no cloud.
+
 ```mermaid
 flowchart LR
     Q[questions.jsonl<br/>60 Qs, 10 unanswerable] --> RUN
@@ -238,3 +243,10 @@ Simulated data can't leak into results by accident: the test server reports `oll
 - Add an LLM-as-judge grader (run locally) and validate it against the human grades with Cohen's κ.
 - Use multiple documents and domains, plus German-language questions.
 - Compare the verbalised confidence with token log-probability confidence.
+
+## Author
+
+**Abdul Muhaimin Khan**: Computer Science student at SRH University of Applied Sciences, Berlin; AI consultant and programming tutor.
+Questions or feedback: open an issue, or email abdul.muhaimin.khan.official@gmail.com.
+
+Licensed under the [MIT License](LICENSE).

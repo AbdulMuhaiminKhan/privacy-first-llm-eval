@@ -190,6 +190,81 @@ def chart_tradeoff(a: dict, path: Path) -> Path:
     return _save(fig, path)
 
 
+def chart_hero(a: dict, path: Path, social: bool = False) -> Path | None:
+    """Three-panel summary for the top of the README (and, with social=True, a 1280x640 social preview).
+    Panel 1: accuracy by mode (pooled, Wilson CI). Panel 2: stated-confidence distribution.
+    Panel 3: latency per model - plain text vs structured on cold and warm prompt cache."""
+    pooled = {c["mode"]: c for c in a["pooled"]}
+    recs = a["records"]
+    if not recs or "text" not in pooled:
+        return None
+    _style()
+    w, h = (12.8, 6.4) if social else (12, 3.9)
+    fig, axes = plt.subplots(1, 3, figsize=(w, h), gridspec_kw={"width_ratios": [1, 1, 1.35]})
+
+    ax = axes[0]
+    modes = [m for m in a["modes"] if m in pooled]
+    vals = [pooled[m]["accuracy"] for m in modes]
+    lo = [pooled[m]["accuracy"] - pooled[m]["accuracy_ci"][0] for m in modes]
+    hi = [pooled[m]["accuracy_ci"][1] - pooled[m]["accuracy"] for m in modes]
+    ax.bar(range(len(modes)), vals, 0.7, color=[MODE_COLORS[m] for m in modes], yerr=[lo, hi],
+           error_kw={"elinewidth": 1, "ecolor": INK_2, "capsize": 3})  # fmt: skip
+    for i, v in enumerate(vals):
+        ax.text(i, v / 2, f"{v:.0%}", ha="center", va="center", color="white", fontweight="bold")
+    ax.set_xticks(range(len(modes)), [MODE_LABELS[m].replace("-", "-\n") for m in modes])
+    ax.set_ylim(0, 1.05)
+    ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    ax.grid(axis="x", visible=False)
+    ax.set_title("Accuracy: no measurable JSON cost")
+
+    ax = axes[1]
+    confs = [r["confidence"] for r in recs if r["confidence"] is not None]
+    wrong_hi = sum(1 for r in recs if r["confidence"] is not None and r["confidence"] >= 0.9 and not r["correct"])
+    bins = np.linspace(0, 1, 11)
+    counts, _ = np.histogram(confs, bins=bins)
+    ax.bar(bins[:-1] + 0.05, counts, 0.09, color=INK_2)
+    top = int((np.asarray(confs) == 1.0).sum())
+    ax.annotate(f"{top}/{len(recs)} say exactly 1.0\n{wrong_hi} wrong at ≥ 0.9", xy=(0.95, counts[-1]),
+                xytext=(0.5, counts[-1] * 0.75), ha="center", fontsize=9, color=INK,
+                arrowprops={"arrowstyle": "-", "color": INK_2, "lw": 1})  # fmt: skip
+    ax.set_xlabel("Stated confidence")
+    ax.set_ylabel("Answers")
+    ax.grid(axis="x", visible=False)
+    ax.set_title("Confidence is a switch")
+
+    ax = axes[2]
+    models = a["models"]
+    groups = [
+        ("Plain text", lambda r: r["output_mode"] == "text", MODE_COLORS["text"], None),
+        ("JSON/schema, cold cache", lambda r: r["output_mode"] != "text" and r.get("prompt_cache_cold", True),
+         MODE_COLORS["json"], None),
+        ("JSON/schema, warm cache", lambda r: r["output_mode"] != "text" and not r.get("prompt_cache_cold", True),
+         SURFACE, MODE_COLORS["json"]),
+    ]  # fmt: skip
+    width = 0.27
+    x = np.arange(len(models))
+    for j, (label, pred, face, edge) in enumerate(groups):
+        meds = []
+        for m in models:
+            lat = [r["latency_ms"] / 1000 for r in recs if r["model"] == m and pred(r)]
+            meds.append(float(np.median(lat)) if lat else np.nan)
+        ax.bar(x + (j - 1) * width, meds, width * 0.92, color=face, label=label,
+               edgecolor=edge or face, linewidth=1.8, hatch="///" if edge else None)  # fmt: skip
+    ax.set_xticks(x, models)
+    ax.grid(axis="x", visible=False)
+    ax.set_ylabel("Median response time (s)")
+    ax.legend(fontsize=8, loc="upper left")
+    ax.set_title("Latency: the cache trap")
+    if social:  # exactly 1280x640 for GitHub / LinkedIn previews
+        title = f"Does forcing JSON make small local LLMs worse?  ·  {len(recs)} answers, {len(models)} models, offline"
+        fig.suptitle(title, fontsize=15, fontweight="bold", x=0.01, ha="left")
+        fig.tight_layout()
+        fig.savefig(path, dpi=100)
+        plt.close(fig)
+        return path
+    return _save(fig, path)
+
+
 def make_all(a: dict, out_dir: Path) -> dict[str, Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     made = {
@@ -199,5 +274,7 @@ def make_all(a: dict, out_dir: Path) -> dict[str, Path]:
         "reliability": chart_reliability(a, out_dir / "format_reliability.png"),
         "calibration": chart_calibration(a, out_dir / "calibration.png"),
         "tradeoff": chart_tradeoff(a, out_dir / "tradeoff.png"),
+        "hero": chart_hero(a, out_dir / "hero.png"),
+        "social": chart_hero(a, out_dir / "social_preview.png", social=True),
     }
     return {k: v for k, v in made.items() if v is not None}

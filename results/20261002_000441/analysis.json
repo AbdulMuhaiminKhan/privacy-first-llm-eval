@@ -68,7 +68,7 @@
     "regraded": 1,
     "started_at": "2026-10-01T21:04:41+00:00",
     "finished_at": "2026-10-01T21:26:31+00:00",
-    "generated_at": "2026-10-01T21:37:18+00:00"
+    "generated_at": "2026-10-01T22:03:09+00:00"
   },
   "models": [
     "phi3",
@@ -1689,7 +1689,8 @@
       "latency_ms": 777.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1705,7 +1706,8 @@
       "latency_ms": 604.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1721,7 +1723,8 @@
       "latency_ms": 764.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -1737,7 +1740,8 @@
       "latency_ms": 858.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1753,7 +1757,8 @@
       "latency_ms": 866.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1769,7 +1774,8 @@
       "latency_ms": 506.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -1785,7 +1791,8 @@
       "latency_ms": 906.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1801,7 +1808,8 @@
       "latency_ms": 947.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1817,7 +1825,8 @@
       "latency_ms": 613.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -1833,7 +1842,8 @@
       "latency_ms": 698.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1849,7 +1859,8 @@
       "latency_ms": 1000.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1865,7 +1876,8 @@
       "latency_ms": 675.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -1881,7 +1893,8 @@
       "latency_ms": 927.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1897,7 +1910,8 @@
       "latency_ms": 1087.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1913,7 +1927,8 @@
       "latency_ms": 694.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -1929,7 +1944,8 @@
       "latency_ms": 746.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1945,7 +1961,8 @@
       "latency_ms": 455.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -1961,7 +1978,8 @@
       "latency_ms": 737.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1977,7 +1995,8 @@
       "latency_ms": 1034.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -1993,7 +2012,8 @@
       "latency_ms": 859.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2009,7 +2029,8 @@
       "latency_ms": 859.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2025,7 +2046,8 @@
       "latency_ms": 926.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2041,7 +2063,8 @@
       "latency_ms": 1136.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2057,7 +2080,8 @@
       "latency_ms": 808.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2073,7 +2097,8 @@
       "latency_ms": 575.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2089,7 +2114,8 @@
       "latency_ms": 980.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2105,7 +2131,8 @@
       "latency_ms": 483.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2121,7 +2148,8 @@
       "latency_ms": 757.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2137,7 +2165,8 @@
       "latency_ms": 1111.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2153,7 +2182,8 @@
       "latency_ms": 542.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2169,7 +2199,8 @@
       "latency_ms": 2760.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2185,7 +2216,8 @@
       "latency_ms": 557.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2201,7 +2233,8 @@
       "latency_ms": 2630.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2217,7 +2250,8 @@
       "latency_ms": 1588.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2233,7 +2267,8 @@
       "latency_ms": 561.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2249,7 +2284,8 @@
       "latency_ms": 1577.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2265,7 +2301,8 @@
       "latency_ms": 1010.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2281,7 +2318,8 @@
       "latency_ms": 472.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2297,7 +2335,8 @@
       "latency_ms": 1212.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2313,7 +2352,8 @@
       "latency_ms": 955.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2329,7 +2369,8 @@
       "latency_ms": 704.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2345,7 +2386,8 @@
       "latency_ms": 867.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2361,7 +2403,8 @@
       "latency_ms": 3733.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2377,7 +2420,8 @@
       "latency_ms": 3223.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2393,7 +2437,8 @@
       "latency_ms": 1121.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2409,7 +2454,8 @@
       "latency_ms": 1590.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2425,7 +2471,8 @@
       "latency_ms": 492.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2441,7 +2488,8 @@
       "latency_ms": 1055.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2457,7 +2505,8 @@
       "latency_ms": 910.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2473,7 +2522,8 @@
       "latency_ms": 591.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2489,7 +2539,8 @@
       "latency_ms": 640.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2505,7 +2556,8 @@
       "latency_ms": 1652.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2521,7 +2573,8 @@
       "latency_ms": 2543.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2537,7 +2590,8 @@
       "latency_ms": 463.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2553,7 +2607,8 @@
       "latency_ms": 1246.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2569,7 +2624,8 @@
       "latency_ms": 530.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2585,7 +2641,8 @@
       "latency_ms": 856.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2601,7 +2658,8 @@
       "latency_ms": 740.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2617,7 +2675,8 @@
       "latency_ms": 2884.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2633,7 +2692,8 @@
       "latency_ms": 394.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2649,7 +2709,8 @@
       "latency_ms": 3198.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2665,7 +2726,8 @@
       "latency_ms": 666.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2681,7 +2743,8 @@
       "latency_ms": 811.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2697,7 +2760,8 @@
       "latency_ms": 808.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2713,7 +2777,8 @@
       "latency_ms": 515.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2729,7 +2794,8 @@
       "latency_ms": 631.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2745,7 +2811,8 @@
       "latency_ms": 794.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2761,7 +2828,8 @@
       "latency_ms": 519.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2777,7 +2845,8 @@
       "latency_ms": 634.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2793,7 +2862,8 @@
       "latency_ms": 3736.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2809,7 +2879,8 @@
       "latency_ms": 3728.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2825,7 +2896,8 @@
       "latency_ms": 468.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2841,7 +2913,8 @@
       "latency_ms": 808.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2857,7 +2930,8 @@
       "latency_ms": 755.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2873,7 +2947,8 @@
       "latency_ms": 605.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2889,7 +2964,8 @@
       "latency_ms": 1011.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2905,7 +2981,8 @@
       "latency_ms": 1360.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2921,7 +2998,8 @@
       "latency_ms": 453.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2937,7 +3015,8 @@
       "latency_ms": 1244.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2953,7 +3032,8 @@
       "latency_ms": 886.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -2969,7 +3049,8 @@
       "latency_ms": 487.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -2985,7 +3066,8 @@
       "latency_ms": 708.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3001,7 +3083,8 @@
       "latency_ms": 753.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3017,7 +3100,8 @@
       "latency_ms": 658.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3033,7 +3117,8 @@
       "latency_ms": 5218.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3049,7 +3134,8 @@
       "latency_ms": 555.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3065,7 +3151,8 @@
       "latency_ms": 3433.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3081,7 +3168,8 @@
       "latency_ms": 1268.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3097,7 +3185,8 @@
       "latency_ms": 974.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3113,7 +3202,8 @@
       "latency_ms": 766.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3129,7 +3219,8 @@
       "latency_ms": 685.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3145,7 +3236,8 @@
       "latency_ms": 769.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3161,7 +3253,8 @@
       "latency_ms": 470.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3177,7 +3270,8 @@
       "latency_ms": 1377.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3193,7 +3287,8 @@
       "latency_ms": 606.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3209,7 +3304,8 @@
       "latency_ms": 1220.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3225,7 +3321,8 @@
       "latency_ms": 1413.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3241,7 +3338,8 @@
       "latency_ms": 723.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3257,7 +3355,8 @@
       "latency_ms": 677.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3273,7 +3372,8 @@
       "latency_ms": 874.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3289,7 +3389,8 @@
       "latency_ms": 784.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3305,7 +3406,8 @@
       "latency_ms": 881.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3321,7 +3423,8 @@
       "latency_ms": 2344.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3337,7 +3440,8 @@
       "latency_ms": 500.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3353,7 +3457,8 @@
       "latency_ms": 2834.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3369,7 +3474,8 @@
       "latency_ms": 1082.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3385,7 +3491,8 @@
       "latency_ms": 5242.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3401,7 +3508,8 @@
       "latency_ms": 538.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3417,7 +3525,8 @@
       "latency_ms": 2136.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3433,7 +3542,8 @@
       "latency_ms": 1338.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3449,7 +3559,8 @@
       "latency_ms": 713.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3465,7 +3576,8 @@
       "latency_ms": 858.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3481,7 +3593,8 @@
       "latency_ms": 960.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3497,7 +3610,8 @@
       "latency_ms": 488.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3513,7 +3627,8 @@
       "latency_ms": 3324.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3529,7 +3644,8 @@
       "latency_ms": 1857.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3545,7 +3661,8 @@
       "latency_ms": 829.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3561,7 +3678,8 @@
       "latency_ms": 675.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3577,7 +3695,8 @@
       "latency_ms": 3371.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3593,7 +3712,8 @@
       "latency_ms": 538.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3609,7 +3729,8 @@
       "latency_ms": 1386.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3625,7 +3746,8 @@
       "latency_ms": 963.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3641,7 +3763,8 @@
       "latency_ms": 564.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3657,7 +3780,8 @@
       "latency_ms": 954.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3673,7 +3797,8 @@
       "latency_ms": 813.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3689,7 +3814,8 @@
       "latency_ms": 884.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3705,7 +3831,8 @@
       "latency_ms": 960.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3721,7 +3848,8 @@
       "latency_ms": 771.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3737,7 +3865,8 @@
       "latency_ms": 872.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3753,7 +3882,8 @@
       "latency_ms": 1131.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3769,7 +3899,8 @@
       "latency_ms": 766.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3785,7 +3916,8 @@
       "latency_ms": 1029.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3801,7 +3933,8 @@
       "latency_ms": 2134.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3817,7 +3950,8 @@
       "latency_ms": 3252.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3833,7 +3967,8 @@
       "latency_ms": 540.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3849,7 +3984,8 @@
       "latency_ms": 688.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3865,7 +4001,8 @@
       "latency_ms": 951.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3881,7 +4018,8 @@
       "latency_ms": 494.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3897,7 +4035,8 @@
       "latency_ms": 657.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3913,7 +4052,8 @@
       "latency_ms": 531.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3929,7 +4069,8 @@
       "latency_ms": 368.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3945,7 +4086,8 @@
       "latency_ms": 2608.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3961,7 +4103,8 @@
       "latency_ms": 554.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -3977,7 +4120,8 @@
       "latency_ms": 744.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -3993,7 +4137,8 @@
       "latency_ms": 607.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4009,7 +4154,8 @@
       "latency_ms": 2856.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4025,7 +4171,8 @@
       "latency_ms": 519.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4041,7 +4188,8 @@
       "latency_ms": 4138.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4057,7 +4205,8 @@
       "latency_ms": 629.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4073,7 +4222,8 @@
       "latency_ms": 3324.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4089,7 +4239,8 @@
       "latency_ms": 309.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4105,7 +4256,8 @@
       "latency_ms": 721.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4121,7 +4273,8 @@
       "latency_ms": 489.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4137,7 +4290,8 @@
       "latency_ms": 2576.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4153,7 +4307,8 @@
       "latency_ms": 3158.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4169,7 +4324,8 @@
       "latency_ms": 484.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4185,7 +4341,8 @@
       "latency_ms": 800.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4201,7 +4358,8 @@
       "latency_ms": 453.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4217,7 +4375,8 @@
       "latency_ms": 717.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4233,7 +4392,8 @@
       "latency_ms": 3308.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4249,7 +4409,8 @@
       "latency_ms": 820.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4265,7 +4426,8 @@
       "latency_ms": 577.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4281,7 +4443,8 @@
       "latency_ms": 519.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4297,7 +4460,8 @@
       "latency_ms": 476.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4313,7 +4477,8 @@
       "latency_ms": 647.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4329,7 +4494,8 @@
       "latency_ms": 2984.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4345,7 +4511,8 @@
       "latency_ms": 746.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4361,7 +4528,8 @@
       "latency_ms": 522.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4377,7 +4545,8 @@
       "latency_ms": 498.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4393,7 +4562,8 @@
       "latency_ms": 693.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4409,7 +4579,8 @@
       "latency_ms": 543.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4425,7 +4596,8 @@
       "latency_ms": 802.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4441,7 +4613,8 @@
       "latency_ms": 575.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4457,7 +4630,8 @@
       "latency_ms": 709.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4473,7 +4647,8 @@
       "latency_ms": 924.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4489,7 +4664,8 @@
       "latency_ms": 692.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4505,7 +4681,8 @@
       "latency_ms": 726.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4521,7 +4698,8 @@
       "latency_ms": 3782.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "phi3",
@@ -4537,7 +4715,8 @@
       "latency_ms": 537.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "phi3",
@@ -4553,7 +4732,8 @@
       "latency_ms": 4162.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4569,7 +4749,8 @@
       "latency_ms": 1132.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4585,7 +4766,8 @@
       "latency_ms": 1458.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4601,7 +4783,8 @@
       "latency_ms": 809.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4617,7 +4800,8 @@
       "latency_ms": 1450.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4633,7 +4817,8 @@
       "latency_ms": 1085.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4649,7 +4834,8 @@
       "latency_ms": 1287.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4665,7 +4851,8 @@
       "latency_ms": 820.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4681,7 +4868,8 @@
       "latency_ms": 632.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4697,7 +4885,8 @@
       "latency_ms": 1058.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4713,7 +4902,8 @@
       "latency_ms": 1037.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4729,7 +4919,8 @@
       "latency_ms": 1254.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4745,7 +4936,8 @@
       "latency_ms": 990.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4761,7 +4953,8 @@
       "latency_ms": 1157.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4777,7 +4970,8 @@
       "latency_ms": 1245.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4793,7 +4987,8 @@
       "latency_ms": 828.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4809,7 +5004,8 @@
       "latency_ms": 1354.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4825,7 +5021,8 @@
       "latency_ms": 1473.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4841,7 +5038,8 @@
       "latency_ms": 1129.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4857,7 +5055,8 @@
       "latency_ms": 1346.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4873,7 +5072,8 @@
       "latency_ms": 1036.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4889,7 +5089,8 @@
       "latency_ms": 1371.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4905,7 +5106,8 @@
       "latency_ms": 1008.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4921,7 +5123,8 @@
       "latency_ms": 913.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4937,7 +5140,8 @@
       "latency_ms": 867.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4953,7 +5157,8 @@
       "latency_ms": 1001.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -4969,7 +5174,8 @@
       "latency_ms": 789.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -4985,7 +5191,8 @@
       "latency_ms": 881.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5001,7 +5208,8 @@
       "latency_ms": 1234.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5017,7 +5225,8 @@
       "latency_ms": 876.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5033,7 +5242,8 @@
       "latency_ms": 2205.0,
       "retry_count": 0,
       "parse_success": false,
-      "first_attempt_parse_success": false
+      "first_attempt_parse_success": false,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5049,7 +5259,8 @@
       "latency_ms": 1145.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5065,7 +5276,8 @@
       "latency_ms": 714.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5081,7 +5293,8 @@
       "latency_ms": 1400.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5097,7 +5310,8 @@
       "latency_ms": 1290.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5113,7 +5327,8 @@
       "latency_ms": 1384.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5129,7 +5344,8 @@
       "latency_ms": 959.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5145,7 +5361,8 @@
       "latency_ms": 1095.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5161,7 +5378,8 @@
       "latency_ms": 1070.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5177,7 +5395,8 @@
       "latency_ms": 784.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5193,7 +5412,8 @@
       "latency_ms": 1018.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5209,7 +5429,8 @@
       "latency_ms": 1143.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5225,7 +5446,8 @@
       "latency_ms": 778.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5241,7 +5463,8 @@
       "latency_ms": 863.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5257,7 +5480,8 @@
       "latency_ms": 827.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5273,7 +5497,8 @@
       "latency_ms": 596.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5289,7 +5514,8 @@
       "latency_ms": 1524.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5305,7 +5531,8 @@
       "latency_ms": 1125.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5321,7 +5548,8 @@
       "latency_ms": 1464.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5337,7 +5565,8 @@
       "latency_ms": 1122.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5353,7 +5582,8 @@
       "latency_ms": 947.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5369,7 +5599,8 @@
       "latency_ms": 912.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5385,7 +5616,8 @@
       "latency_ms": 1168.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5401,7 +5633,8 @@
       "latency_ms": 795.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5417,7 +5650,8 @@
       "latency_ms": 724.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5433,7 +5667,8 @@
       "latency_ms": 1149.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5449,7 +5684,8 @@
       "latency_ms": 1039.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5465,7 +5701,8 @@
       "latency_ms": 753.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5481,7 +5718,8 @@
       "latency_ms": 1288.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5497,7 +5735,8 @@
       "latency_ms": 1338.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5513,7 +5752,8 @@
       "latency_ms": 1032.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5529,7 +5769,8 @@
       "latency_ms": 1134.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5545,7 +5786,8 @@
       "latency_ms": 869.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5561,7 +5803,8 @@
       "latency_ms": 1166.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5577,7 +5820,8 @@
       "latency_ms": 869.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5593,7 +5837,8 @@
       "latency_ms": 974.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5609,7 +5854,8 @@
       "latency_ms": 863.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5625,7 +5871,8 @@
       "latency_ms": 1148.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5641,7 +5888,8 @@
       "latency_ms": 732.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5657,7 +5905,8 @@
       "latency_ms": 1363.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5673,7 +5922,8 @@
       "latency_ms": 753.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5689,7 +5939,8 @@
       "latency_ms": 618.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5705,7 +5956,8 @@
       "latency_ms": 692.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5721,7 +5973,8 @@
       "latency_ms": 692.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5737,7 +5990,8 @@
       "latency_ms": 837.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5753,7 +6007,8 @@
       "latency_ms": 648.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5769,7 +6024,8 @@
       "latency_ms": 918.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5785,7 +6041,8 @@
       "latency_ms": 821.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5801,7 +6058,8 @@
       "latency_ms": 1555.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5817,7 +6075,8 @@
       "latency_ms": 790.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5833,7 +6092,8 @@
       "latency_ms": 939.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5849,7 +6109,8 @@
       "latency_ms": 873.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5865,7 +6126,8 @@
       "latency_ms": 1102.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5881,7 +6143,8 @@
       "latency_ms": 628.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5897,7 +6160,8 @@
       "latency_ms": 1020.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5913,7 +6177,8 @@
       "latency_ms": 1178.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5929,7 +6194,8 @@
       "latency_ms": 942.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5945,7 +6211,8 @@
       "latency_ms": 644.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5961,7 +6228,8 @@
       "latency_ms": 1496.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -5977,7 +6245,8 @@
       "latency_ms": 1027.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -5993,7 +6262,8 @@
       "latency_ms": 1316.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6009,7 +6279,8 @@
       "latency_ms": 1803.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6025,7 +6296,8 @@
       "latency_ms": 1451.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6041,7 +6313,8 @@
       "latency_ms": 903.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6057,7 +6330,8 @@
       "latency_ms": 1281.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6073,7 +6347,8 @@
       "latency_ms": 1116.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6089,7 +6364,8 @@
       "latency_ms": 979.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6105,7 +6381,8 @@
       "latency_ms": 1321.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6121,7 +6398,8 @@
       "latency_ms": 1050.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6137,7 +6415,8 @@
       "latency_ms": 1374.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6153,7 +6432,8 @@
       "latency_ms": 838.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6169,7 +6449,8 @@
       "latency_ms": 1025.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6185,7 +6466,8 @@
       "latency_ms": 1076.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6201,7 +6483,8 @@
       "latency_ms": 1369.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6217,7 +6500,8 @@
       "latency_ms": 1344.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6233,7 +6517,8 @@
       "latency_ms": 930.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6249,7 +6534,8 @@
       "latency_ms": 1224.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6265,7 +6551,8 @@
       "latency_ms": 1374.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6281,7 +6568,8 @@
       "latency_ms": 994.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6297,7 +6585,8 @@
       "latency_ms": 2375.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6313,7 +6602,8 @@
       "latency_ms": 1084.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6329,7 +6619,8 @@
       "latency_ms": 2568.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6345,7 +6636,8 @@
       "latency_ms": 1131.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6361,7 +6653,8 @@
       "latency_ms": 1588.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6377,7 +6670,8 @@
       "latency_ms": 837.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6393,7 +6687,8 @@
       "latency_ms": 1264.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6409,7 +6704,8 @@
       "latency_ms": 1590.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6425,7 +6721,8 @@
       "latency_ms": 1295.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6441,7 +6738,8 @@
       "latency_ms": 1062.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6457,7 +6755,8 @@
       "latency_ms": 1396.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6473,7 +6772,8 @@
       "latency_ms": 866.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6489,7 +6789,8 @@
       "latency_ms": 1296.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6505,7 +6806,8 @@
       "latency_ms": 796.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6521,7 +6823,8 @@
       "latency_ms": 1330.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6537,7 +6840,8 @@
       "latency_ms": 1150.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6553,7 +6857,8 @@
       "latency_ms": 856.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6569,7 +6874,8 @@
       "latency_ms": 968.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6585,7 +6891,8 @@
       "latency_ms": 828.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6601,7 +6908,8 @@
       "latency_ms": 698.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6617,7 +6925,8 @@
       "latency_ms": 622.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6633,7 +6942,8 @@
       "latency_ms": 602.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6649,7 +6959,8 @@
       "latency_ms": 812.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6665,7 +6976,8 @@
       "latency_ms": 796.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6681,7 +6993,8 @@
       "latency_ms": 1193.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6697,7 +7010,8 @@
       "latency_ms": 1068.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6713,7 +7027,8 @@
       "latency_ms": 852.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6729,7 +7044,8 @@
       "latency_ms": 1190.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6745,7 +7061,8 @@
       "latency_ms": 1473.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6761,7 +7078,8 @@
       "latency_ms": 1114.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6777,7 +7095,8 @@
       "latency_ms": 1198.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6793,7 +7112,8 @@
       "latency_ms": 998.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6809,7 +7129,8 @@
       "latency_ms": 1133.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6825,7 +7146,8 @@
       "latency_ms": 1492.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6841,7 +7163,8 @@
       "latency_ms": 1110.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6857,7 +7180,8 @@
       "latency_ms": 1358.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6873,7 +7197,8 @@
       "latency_ms": 1142.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6889,7 +7214,8 @@
       "latency_ms": 1147.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6905,7 +7231,8 @@
       "latency_ms": 1163.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6921,7 +7248,8 @@
       "latency_ms": 1585.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6937,7 +7265,8 @@
       "latency_ms": 1252.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6953,7 +7282,8 @@
       "latency_ms": 1007.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -6969,7 +7299,8 @@
       "latency_ms": 1435.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -6985,7 +7316,8 @@
       "latency_ms": 1584.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7001,7 +7333,8 @@
       "latency_ms": 1404.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7017,7 +7350,8 @@
       "latency_ms": 1256.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7033,7 +7367,8 @@
       "latency_ms": 1581.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7049,7 +7384,8 @@
       "latency_ms": 1130.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7065,7 +7401,8 @@
       "latency_ms": 1427.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7081,7 +7418,8 @@
       "latency_ms": 1006.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7097,7 +7435,8 @@
       "latency_ms": 1268.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7113,7 +7452,8 @@
       "latency_ms": 1042.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7129,7 +7469,8 @@
       "latency_ms": 1732.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7145,7 +7486,8 @@
       "latency_ms": 621.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7161,7 +7503,8 @@
       "latency_ms": 1970.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7177,7 +7520,8 @@
       "latency_ms": 2096.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7193,7 +7537,8 @@
       "latency_ms": 946.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7209,7 +7554,8 @@
       "latency_ms": 2507.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7225,7 +7571,8 @@
       "latency_ms": 710.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7241,7 +7588,8 @@
       "latency_ms": 2010.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7257,7 +7605,8 @@
       "latency_ms": 1444.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7273,7 +7622,8 @@
       "latency_ms": 1201.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7289,7 +7639,8 @@
       "latency_ms": 1252.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7305,7 +7656,8 @@
       "latency_ms": 1942.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7321,7 +7673,8 @@
       "latency_ms": 2061.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7337,7 +7690,8 @@
       "latency_ms": 1347.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7353,7 +7707,8 @@
       "latency_ms": 1616.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7369,7 +7724,8 @@
       "latency_ms": 1026.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "mistral",
@@ -7385,7 +7741,8 @@
       "latency_ms": 1367.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7401,7 +7758,8 @@
       "latency_ms": 1456.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7417,7 +7775,8 @@
       "latency_ms": 1416.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "mistral",
@@ -7433,7 +7792,8 @@
       "latency_ms": 1261.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7449,7 +7809,8 @@
       "latency_ms": 2069.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7465,7 +7826,8 @@
       "latency_ms": 1739.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7481,7 +7843,8 @@
       "latency_ms": 2966.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7497,7 +7860,8 @@
       "latency_ms": 3279.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7513,7 +7877,8 @@
       "latency_ms": 2758.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7529,7 +7894,8 @@
       "latency_ms": 3213.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7545,7 +7911,8 @@
       "latency_ms": 3392.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7561,7 +7928,8 @@
       "latency_ms": 2822.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7577,7 +7945,8 @@
       "latency_ms": 3739.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7593,7 +7962,8 @@
       "latency_ms": 3656.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7609,7 +7979,8 @@
       "latency_ms": 4032.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7625,7 +7996,8 @@
       "latency_ms": 3086.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7641,7 +8013,8 @@
       "latency_ms": 2877.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7657,7 +8030,8 @@
       "latency_ms": 3244.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7673,7 +8047,8 @@
       "latency_ms": 2213.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7689,7 +8064,8 @@
       "latency_ms": 2390.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7705,7 +8081,8 @@
       "latency_ms": 1949.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7721,7 +8098,8 @@
       "latency_ms": 2539.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7737,7 +8115,8 @@
       "latency_ms": 3892.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7753,7 +8132,8 @@
       "latency_ms": 4972.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7769,7 +8149,8 @@
       "latency_ms": 2693.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7785,7 +8166,8 @@
       "latency_ms": 2868.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7801,7 +8183,8 @@
       "latency_ms": 2569.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7817,7 +8200,8 @@
       "latency_ms": 2018.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7833,7 +8217,8 @@
       "latency_ms": 6374.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7849,7 +8234,8 @@
       "latency_ms": 6599.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7865,7 +8251,8 @@
       "latency_ms": 2781.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7881,7 +8268,8 @@
       "latency_ms": 10276.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7897,7 +8285,8 @@
       "latency_ms": 4583.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7913,7 +8302,8 @@
       "latency_ms": 2194.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7929,7 +8319,8 @@
       "latency_ms": 4408.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7945,7 +8336,8 @@
       "latency_ms": 3108.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7961,7 +8353,8 @@
       "latency_ms": 2326.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -7977,7 +8370,8 @@
       "latency_ms": 5163.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -7993,7 +8387,8 @@
       "latency_ms": 11983.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8009,7 +8404,8 @@
       "latency_ms": 1794.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8025,7 +8421,8 @@
       "latency_ms": 4320.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8041,7 +8438,8 @@
       "latency_ms": 1672.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8057,7 +8455,8 @@
       "latency_ms": 5769.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8073,7 +8472,8 @@
       "latency_ms": 3650.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8089,7 +8489,8 @@
       "latency_ms": 1975.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8105,7 +8506,8 @@
       "latency_ms": 4885.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8121,7 +8523,8 @@
       "latency_ms": 13677.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8137,7 +8540,8 @@
       "latency_ms": 4669.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8153,7 +8557,8 @@
       "latency_ms": 2951.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8169,7 +8574,8 @@
       "latency_ms": 2515.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8185,7 +8591,8 @@
       "latency_ms": 2963.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8201,7 +8608,8 @@
       "latency_ms": 2376.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8217,7 +8625,8 @@
       "latency_ms": 6986.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8233,7 +8642,8 @@
       "latency_ms": 6070.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8249,7 +8659,8 @@
       "latency_ms": 4178.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8265,7 +8676,8 @@
       "latency_ms": 9672.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8281,7 +8693,8 @@
       "latency_ms": 1802.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8297,7 +8710,8 @@
       "latency_ms": 6555.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8313,7 +8727,8 @@
       "latency_ms": 4494.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8329,7 +8744,8 @@
       "latency_ms": 5939.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8345,7 +8761,8 @@
       "latency_ms": 2775.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8361,7 +8778,8 @@
       "latency_ms": 5008.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8377,7 +8795,8 @@
       "latency_ms": 1751.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8393,7 +8812,8 @@
       "latency_ms": 4097.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8409,7 +8829,8 @@
       "latency_ms": 7188.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8425,7 +8846,8 @@
       "latency_ms": 11289.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8441,7 +8863,8 @@
       "latency_ms": 6690.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8457,7 +8880,8 @@
       "latency_ms": 9131.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8473,7 +8897,8 @@
       "latency_ms": 2544.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8489,7 +8914,8 @@
       "latency_ms": 11456.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8505,7 +8931,8 @@
       "latency_ms": 5491.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8521,7 +8948,8 @@
       "latency_ms": 8490.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8537,7 +8965,8 @@
       "latency_ms": 2655.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8553,7 +8982,8 @@
       "latency_ms": 6370.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8569,7 +8999,8 @@
       "latency_ms": 6996.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8585,7 +9016,8 @@
       "latency_ms": 2120.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8601,7 +9033,8 @@
       "latency_ms": 5292.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8617,7 +9050,8 @@
       "latency_ms": 9700.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8633,7 +9067,8 @@
       "latency_ms": 1763.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8649,7 +9084,8 @@
       "latency_ms": 8760.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8665,7 +9101,8 @@
       "latency_ms": 7138.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8681,7 +9118,8 @@
       "latency_ms": 2442.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8697,7 +9135,8 @@
       "latency_ms": 4730.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8713,7 +9152,8 @@
       "latency_ms": 6585.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8729,7 +9169,8 @@
       "latency_ms": 7724.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8745,7 +9186,8 @@
       "latency_ms": 4526.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8761,7 +9203,8 @@
       "latency_ms": 6485.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8777,7 +9220,8 @@
       "latency_ms": 3186.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8793,7 +9237,8 @@
       "latency_ms": 18682.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8809,7 +9254,8 @@
       "latency_ms": 2700.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8825,7 +9271,8 @@
       "latency_ms": 3935.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8841,7 +9288,8 @@
       "latency_ms": 6510.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8857,7 +9305,8 @@
       "latency_ms": 8533.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8873,7 +9322,8 @@
       "latency_ms": 2052.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8889,7 +9339,8 @@
       "latency_ms": 3323.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8905,7 +9356,8 @@
       "latency_ms": 4492.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8921,7 +9373,8 @@
       "latency_ms": 2278.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8937,7 +9390,8 @@
       "latency_ms": 10733.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8953,7 +9407,8 @@
       "latency_ms": 6365.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -8969,7 +9424,8 @@
       "latency_ms": 1952.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -8985,7 +9441,8 @@
       "latency_ms": 7423.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9001,7 +9458,8 @@
       "latency_ms": 5120.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9017,7 +9475,8 @@
       "latency_ms": 3807.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9033,7 +9492,8 @@
       "latency_ms": 10015.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9049,7 +9509,8 @@
       "latency_ms": 1595.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9065,7 +9526,8 @@
       "latency_ms": 5174.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9081,7 +9543,8 @@
       "latency_ms": 4116.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9097,7 +9560,8 @@
       "latency_ms": 5033.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9113,7 +9577,8 @@
       "latency_ms": 1815.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9129,7 +9594,8 @@
       "latency_ms": 1763.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9145,7 +9611,8 @@
       "latency_ms": 2134.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9161,7 +9628,8 @@
       "latency_ms": 1466.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9177,7 +9645,8 @@
       "latency_ms": 2706.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9193,7 +9662,8 @@
       "latency_ms": 4592.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9209,7 +9679,8 @@
       "latency_ms": 2055.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9225,7 +9696,8 @@
       "latency_ms": 8130.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9241,7 +9713,8 @@
       "latency_ms": 11820.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9257,7 +9730,8 @@
       "latency_ms": 6875.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9273,7 +9747,8 @@
       "latency_ms": 9363.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9289,7 +9764,8 @@
       "latency_ms": 3622.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9305,7 +9781,8 @@
       "latency_ms": 2061.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9321,7 +9798,8 @@
       "latency_ms": 3556.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9337,7 +9815,8 @@
       "latency_ms": 4527.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9353,7 +9832,8 @@
       "latency_ms": 2357.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9369,7 +9849,8 @@
       "latency_ms": 8522.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9385,7 +9866,8 @@
       "latency_ms": 3478.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9401,7 +9883,8 @@
       "latency_ms": 2509.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9417,7 +9900,8 @@
       "latency_ms": 5280.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9433,7 +9917,8 @@
       "latency_ms": 2910.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9449,7 +9934,8 @@
       "latency_ms": 2443.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9465,7 +9951,8 @@
       "latency_ms": 11849.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9481,7 +9968,8 @@
       "latency_ms": 4632.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9497,7 +9985,8 @@
       "latency_ms": 2283.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9513,7 +10002,8 @@
       "latency_ms": 6246.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9529,7 +10019,8 @@
       "latency_ms": 1662.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9545,7 +10036,8 @@
       "latency_ms": 2307.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9561,7 +10053,8 @@
       "latency_ms": 7603.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9577,7 +10070,8 @@
       "latency_ms": 2520.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9593,7 +10087,8 @@
       "latency_ms": 12363.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9609,7 +10104,8 @@
       "latency_ms": 3693.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9625,7 +10121,8 @@
       "latency_ms": 2038.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9641,7 +10138,8 @@
       "latency_ms": 2093.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9657,7 +10155,8 @@
       "latency_ms": 3301.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9673,7 +10172,8 @@
       "latency_ms": 2165.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9689,7 +10189,8 @@
       "latency_ms": 5836.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9705,7 +10206,8 @@
       "latency_ms": 6543.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9721,7 +10223,8 @@
       "latency_ms": 2765.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9737,7 +10240,8 @@
       "latency_ms": 1680.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9753,7 +10257,8 @@
       "latency_ms": 4050.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9769,7 +10274,8 @@
       "latency_ms": 4663.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9785,7 +10291,8 @@
       "latency_ms": 3882.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9801,7 +10308,8 @@
       "latency_ms": 8357.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9817,7 +10325,8 @@
       "latency_ms": 1749.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9833,7 +10342,8 @@
       "latency_ms": 8085.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9849,7 +10359,8 @@
       "latency_ms": 5215.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9865,7 +10376,8 @@
       "latency_ms": 9067.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9881,7 +10393,8 @@
       "latency_ms": 1997.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9897,7 +10410,8 @@
       "latency_ms": 8512.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9913,7 +10427,8 @@
       "latency_ms": 2446.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9929,7 +10444,8 @@
       "latency_ms": 1859.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9945,7 +10461,8 @@
       "latency_ms": 3038.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9961,7 +10478,8 @@
       "latency_ms": 3899.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -9977,7 +10495,8 @@
       "latency_ms": 3170.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -9993,7 +10512,8 @@
       "latency_ms": 4696.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10009,7 +10529,8 @@
       "latency_ms": 6085.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10025,7 +10546,8 @@
       "latency_ms": 2686.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -10041,7 +10563,8 @@
       "latency_ms": 10316.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10057,7 +10580,8 @@
       "latency_ms": 7393.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10073,7 +10597,8 @@
       "latency_ms": 2073.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -10089,7 +10614,8 @@
       "latency_ms": 9833.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10105,7 +10631,8 @@
       "latency_ms": 4559.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10121,7 +10648,8 @@
       "latency_ms": 3713.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -10137,7 +10665,8 @@
       "latency_ms": 3090.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10153,7 +10682,8 @@
       "latency_ms": 8198.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10169,7 +10699,8 @@
       "latency_ms": 2387.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -10185,7 +10716,8 @@
       "latency_ms": 7362.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10201,7 +10733,8 @@
       "latency_ms": 1821.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -10217,7 +10750,8 @@
       "latency_ms": 3378.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10233,7 +10767,8 @@
       "latency_ms": 2675.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10249,7 +10784,8 @@
       "latency_ms": 3526.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10265,7 +10801,8 @@
       "latency_ms": 3537.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     },
     {
       "model": "gemma2:9b",
@@ -10281,7 +10818,8 @@
       "latency_ms": 12008.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10297,7 +10835,8 @@
       "latency_ms": 3845.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": true
     },
     {
       "model": "gemma2:9b",
@@ -10313,7 +10852,8 @@
       "latency_ms": 3239.0,
       "retry_count": 0,
       "parse_success": true,
-      "first_attempt_parse_success": true
+      "first_attempt_parse_success": true,
+      "prompt_cache_cold": false
     }
   ],
   "findings": [
