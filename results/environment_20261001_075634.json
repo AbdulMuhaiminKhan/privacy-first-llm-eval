@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-01T07:56:34",
+  "os": "Windows 10",
+  "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+  "physical_cores": 8,
+  "logical_cores": 16,
+  "total_ram_gb": 15.3,
+  "python": "3.11.9",
+  "ollama_version": "0.34.2",
+  "models": [
+    "phi3",
+    "mistral",
+    "gemma2:9b"
+  ],
+  "questions": 30,
+  "document": "handbook.pdf",
+  "format_mode": "json",
+  "num_ctx": 4096,
+  "temperature": 0.0
+}

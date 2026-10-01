@@ -1,0 +1,66 @@
+=== PAGE ===
+Quillfeather Robotics - Employee Operations Handbook 2026
+(Fictional company. Created as an evaluation corpus for offline question answering.)
+
+Section 1: About the Company and Onboarding
+
+Quillfeather Robotics was founded in 2017 in Leipzig, Germany, by Mirela Hofstad and Tobias Veen. The company designs warehouse picking robots and the fleet software that coordinates them. The headquarters remains in Leipzig, and a second engineering office opened in Porto, Portugal, in 2022. As of January 2026 the company employs 412 people across both sites.
+
+Every new hire joins the onboarding programme called Launchpad. Launchpad lasts 21 calendar days and ends with a short demo where the new hire presents one improvement they would make to an internal tool. Each new hire is assigned an onboarding buddy who always comes from a different team, so that newcomers build connections outside their own department.
+
+Laptops are issued on the first day. Every laptop must be enrolled in the company device-management system within 48 hours of being issued; unenrolled devices lose access to internal systems automatically. New hires receive their building access badge from the reception desk on day one and must return it on their last working day.
+
+=== PAGE ===
+Section 2: Working Hours, Leave and Remote Work
+
+Quillfeather uses flexible working time with core hours from 10:00 to 15:00 CET, during which employees are expected to be reachable. Outside core hours, employees plan their own schedule with their team.
+
+Full-time employees receive 28 days of annual leave per calendar year plus 2 additional Focus Days, which are meant for uninterrupted deep work or learning and cannot be combined with public holidays. Up to 5 unused annual-leave days may be carried over into the next year; carried-over days must be used by 31 March or they expire.
+
+In case of illness, employees must notify their manager before 09:30 on the first day of absence. A doctor's certificate is required from the 4th consecutive day of sickness.
+
+Employees may work remotely up to 3 days per week. In addition, each employee may use up to 20 Work-From-Anywhere days per year, which allow working from another country for short periods, subject to a tax check by the People team. Parents receive a company top-up of parental-leave pay to 80 percent of their salary for up to 14 weeks.
+
+=== PAGE ===
+Section 3: Expenses and Travel
+
+All business expenses must be submitted through the Ledgerline expense tool within 30 days of the purchase. An itemised receipt is required for every expense above 25 euros; smaller expenses may be submitted with a short written description instead.
+
+The standard hotel limit is 160 euros per night. For London, Paris and Zurich the limit is raised to 220 euros per night because of higher local prices. Train travel is the preferred mode for any trip that takes less than 5 hours by rail. Flights shorter than 6 hours are booked in economy class; flights of 6 hours or longer may be booked in premium economy.
+
+The daily meal allowance (per diem) for domestic trips within Germany is 42 euros. International per diems follow the official government rates for the destination country.
+
+Any single trip or purchase with an expected total cost above 2,000 euros requires written approval from a director before booking. Corporate credit cards are issued only to employees who travel more than 6 times per year.
+
+=== PAGE ===
+Section 4: IT Security
+
+All passwords must be at least 14 characters long and must be stored in the company password manager, KeyHarbor. Multi-factor authentication is mandatory for every account. Engineering staff must use hardware security keys as their second factor; other staff may use an authenticator app.
+
+Suspected phishing emails must be reported using the Report Phish button in the mail client, which forwards the message to the security team. A lost or stolen device must be reported to the Security Desk within 1 hour of noticing the loss, by calling internal extension 4400.
+
+Security awareness training is mandatory every 6 months, and the security team runs a phishing simulation once per quarter.
+
+Company data is classified into four levels: Public, Internal, Confidential and Restricted. Restricted data, such as customer warehouse layouts and source code for safety controllers, must never be stored on personal devices and may only be shared through the approved encrypted file-transfer service, Parcelvault.
+
+=== PAGE ===
+Section 5: Engineering Practices
+
+Changes to the main branch of firmware repositories require at least 2 approving code reviews. All other repositories require at least 1 approving review. New services must reach a minimum of 80 percent automated test coverage before their first production release.
+
+Production deployments are frozen on Fridays after 14:00 and during the last two weeks of December. Emergency fixes during a freeze require approval from the on-call incident commander.
+
+Incidents are classified from SEV1 (most severe) to SEV4. For a SEV1 incident, the on-call engineer must respond within 15 minutes. A written postmortem is required for every SEV1 and SEV2 incident and must be published within 5 business days of the incident being resolved.
+
+The on-call rotation lasts one week, and the handoff between engineers takes place every Monday at 11:00. Engineers on call receive an on-call allowance of 300 euros per week.
+
+=== PAGE ===
+Section 6: Learning and Benefits
+
+Each employee has an annual learning budget of 1,500 euros for courses, books and conferences. Conference attendance must be approved by the employee's manager at least 6 weeks in advance. German and Portuguese language courses are covered at 100 percent and do not count against the learning budget.
+
+Quillfeather offers bicycle leasing through the PedalPlan programme. For the company pension scheme, Quillfeather matches employee contributions up to 4 percent of gross salary.
+
+Work laptops are refreshed every 3 years, or earlier if a device fails and cannot be repaired.
+
+The internal hackathon, Featherfest, takes place twice a year, in May and November. Winning teams receive an extra Focus Day and their project is considered for the product roadmap.
