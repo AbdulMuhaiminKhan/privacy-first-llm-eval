@@ -72,12 +72,14 @@
   .themebtn { float: right; font: inherit; font-size: 0.8rem; border: 1px solid var(--border); background: var(--surface-1);
               color: var(--text-secondary); border-radius: 8px; padding: 4px 10px; cursor: pointer; }
   .count { color: var(--text-muted); font-size: 0.8rem; }
+  a { color: var(--mode-text); }
 </style>
 </head>
 <body>
 <main>
   <button class="themebtn" id="themeBtn" type="button">Toggle theme</button>
   <h1>Does forcing JSON make small local LLMs worse?</h1>
+  <p class="meta">By Abdul Muhaimin Khan · <a href="https://github.com/AbdulMuhaiminKhan/privacy-first-llm-eval">Code, method &amp; raw data on GitHub →</a></p>
   <p class="sub">Plain text vs JSON mode vs schema-constrained decoding on the same questions, models and hardware, plus a test of whether the models' stated confidence means anything. Everything runs offline via Ollama.</p>
   <div id="app"></div>
 </main>
