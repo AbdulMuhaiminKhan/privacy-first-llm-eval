@@ -3,6 +3,7 @@
     python scripts/make_linkedin_carousel.py results/20261002_000441 --out docs/linkedin_carousel.pdf
 
 Every number on the slides is read from analysis.json - nothing is typed in by hand.
+Type is sized for phones: a 1080 px slide is shown ~390 px wide, so body text is >= 30 pt.
 """
 
 from __future__ import annotations
@@ -25,32 +26,34 @@ MUTED = "#8f8e86"
 GRID = "#e4e3df"
 TEXT_C, JSON_C, SCHEMA_C = "#2a78d6", "#eb6834", "#1baf7a"
 BAD = "#c0362c"
+X0 = 0.08  # left margin
 plt.rcParams.update({"font.family": ["Liberation Sans", "DejaVu Sans"], "text.color": INK})
 
+DASHBOARD = "abdulmuhaiminkhan.github.io/privacy-first-llm-eval"
 
-def slide(pdf, n, total, title, kicker=None):
+
+def new_slide(n: int, total: int, kicker: str, title: str):
     fig = plt.figure(figsize=(10.8, 13.5), dpi=100)
     fig.patch.set_facecolor(BG)
-    if kicker:
-        fig.text(0.08, 0.93, kicker.upper(), fontsize=17, color=JSON_C, fontweight="bold")
-    fig.text(0.08, 0.875, title, fontsize=40, fontweight="bold", va="top", wrap=True, linespacing=1.15)
-    fig.text(0.08, 0.035, "privacy-first-llm-eval  ·  Abdul Muhaimin Khan", fontsize=14, color=MUTED)
-    fig.text(0.92, 0.035, f"{n}/{total}", fontsize=14, color=MUTED, ha="right")
+    fig.text(X0, 0.925, kicker.upper(), fontsize=20, color=JSON_C, fontweight="bold")
+    fig.text(X0, 0.895, title, fontsize=52, fontweight="bold", va="top", linespacing=1.1)
+    fig.text(X0, 0.035, "Abdul Muhaimin Khan  ·  privacy-first-llm-eval", fontsize=16, color=MUTED)
+    fig.text(1 - X0, 0.035, f"{n} / {total}", fontsize=16, color=MUTED, ha="right")
     return fig
 
 
-def body(fig, y, text, size=24, color=INK2, weight="normal"):
-    fig.text(0.08, y, text, fontsize=size, color=color, va="top", linespacing=1.45, fontweight=weight)
+def text(fig, y, s, size=32, color=INK2, weight="normal", ha="left", x=X0):
+    fig.text(x, y, s, fontsize=size, color=color, va="top", ha=ha, linespacing=1.35, fontweight=weight)
 
 
-def style_ax(ax):
+def style_ax(ax, grid_axis="y"):
     ax.set_facecolor(BG)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
-    for s in ("left", "bottom"):
-        ax.spines[s].set_color(GRID)
-    ax.tick_params(colors=INK2, labelsize=16)
-    ax.grid(axis="y", color=GRID)
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    for side in ("left", "bottom"):
+        ax.spines[side].set_color(GRID)
+    ax.tick_params(colors=INK2, labelsize=22, length=0)
+    ax.grid(axis=grid_axis, color=GRID, linewidth=1.2)
     ax.set_axisbelow(True)
 
 
@@ -61,201 +64,166 @@ def build(a: dict, out: Path) -> None:
     n = len(recs)
     ones = sum(1 for r in recs if r["confidence"] == 1.0)
     hcw = a["high_conf_wrong_count"]
-    acc_eff = next(
+    eff = next(
         e for e in a["mode_effects"] if e["scope"] == "ALL" and e["mode"] == "json" and e["metric"] == "accuracy"
     )
     sub = a["calibration"]["substantive_answers_only"]
     models = a["models"]
+    nq = a["n_questions"]
+    big = models[-1]
+    cold = cells[(big, "json")]["latency_median_ms"] / 1000
+    warm = cells[(big, "json")]["latency_warm_median_ms"] / 1000
+    txt = cells[(big, "text")]["latency_median_ms"] / 1000
+    ratios = [cells[(m, mo)]["latency_median_ms"] / cells[(m, "text")]["latency_median_ms"]
+              for m in models for mo in ("json", "schema")]  # fmt: skip
     T = 8
 
     with PdfPages(out) as pdf:
-        # 1 - hook
-        fig = slide(
-            pdf,
-            1,
-            T,
-            "I forced small local\nLLMs to answer in JSON.\n\nMy benchmark lied\nto me once.",
-            "540 answers · fully offline",
-        )
-        body(
-            fig, 0.5, "Does structured output make\nsmall models worse?\nAnd do they know when they're wrong?", 30, INK
-        )
-        body(fig, 0.2, "Swipe →", 26, JSON_C, "bold")
-        pdf.savefig(fig)
-        plt.close(fig)
+
+        def save(fig):
+            pdf.savefig(fig)
+            plt.close(fig)
+
+        # 1 - cover
+        fig = new_slide(1, T, f"{n} answers · {len(models)} models · offline",
+                        "Does forcing\nJSON make small\nlocal LLMs worse?")  # fmt: skip
+        text(fig, 0.56, "I ran a controlled experiment\non my laptop to find out.", 34, INK)
+        text(fig, 0.42, "Plus: the bug that made my\nbenchmark lie about speed.", 34, INK2)
+        text(fig, 0.22, "Swipe →", 34, JSON_C, "bold")
+        save(fig)
 
         # 2 - setup
-        fig = slide(pdf, 2, T, "The setup", "controlled experiment")
-        body(
-            fig,
-            0.74,
-            f"• {len(models)} open-weight models: Phi-3 3.8B,\n   Mistral 7B, Gemma 2 9B (4-bit, Ollama)\n"
-            f"• Same {a['n_questions']} questions about a private document\n"
-            "   (10 of them unanswerable, to catch hallucination)\n"
-            "• 3 output modes, identical instructions:\n"
-            "     plain text  ·  JSON mode  ·  schema-constrained\n"
-            f"• {n} answers, paired design, randomised order\n"
-            "• 100% offline on an RTX 4070 laptop. $0.",
-            25,
-        )
-        body(fig, 0.2, "Only the format changes.\nEverything else is held constant.", 26, INK, "bold")
-        pdf.savefig(fig)
-        plt.close(fig)
+        fig = new_slide(2, T, "the setup", "Only the format\nchanges")
+        text(fig, 0.66, f"{len(models)} models  ×  3 output modes  ×  {nq} questions", 30, INK, "bold")
+        rows = [
+            (TEXT_C, "Plain text", "labelled lines, no constraint"),
+            (JSON_C, "JSON mode", "valid JSON enforced"),
+            (SCHEMA_C, "Schema", "decoding locked to the schema"),
+        ]
+        for i, (c, name, desc) in enumerate(rows):
+            y = 0.575 - i * 0.085
+            fig.patches.append(plt.Rectangle((X0, y - 0.042), 0.018, 0.05, transform=fig.transFigure,
+                                             color=c, figure=fig))  # fmt: skip
+            text(fig, y, name, 32, INK, "bold", x=X0 + 0.04)
+            text(fig, y - 0.033, desc, 24, INK2, x=X0 + 0.04)
+        text(fig, 0.27,
+             "Same instructions, same context,\none validation contract (Pydantic).\n"
+             "Phi-3 3.8B · Mistral 7B · Gemma 2 9B\nvia Ollama on an RTX 4070 laptop.", 28)  # fmt: skip
+        save(fig)
 
         # 3 - accuracy
-        fig = slide(pdf, 3, T, "Forcing JSON did not\ncost accuracy", "finding 1")
-        ax = fig.add_axes([0.1, 0.3, 0.82, 0.38])
+        fig = new_slide(3, T, "finding 1", "JSON cost no\nmeasurable accuracy")
+        ax = fig.add_axes([0.11, 0.25, 0.81, 0.42])
         style_ax(ax)
         modes = ["text", "json", "schema"]
         vals = [pooled[m]["accuracy"] for m in modes]
         lo = [pooled[m]["accuracy"] - pooled[m]["accuracy_ci"][0] for m in modes]
         hi = [pooled[m]["accuracy_ci"][1] - pooled[m]["accuracy"] for m in modes]
-        ax.bar(
-            range(3),
-            vals,
-            0.62,
-            color=[TEXT_C, JSON_C, SCHEMA_C],
-            yerr=[lo, hi],
-            error_kw={"elinewidth": 2, "ecolor": INK2, "capsize": 6},
-        )
+        ax.bar(range(3), vals, 0.64, color=[TEXT_C, JSON_C, SCHEMA_C], yerr=[lo, hi],
+               error_kw={"elinewidth": 2.5, "ecolor": INK2, "capsize": 8})  # fmt: skip
         for i, v in enumerate(vals):
-            ax.text(i, v / 2, f"{v:.0%}", ha="center", color="white", fontsize=34, fontweight="bold")
-        ax.set_xticks(range(3), ["Plain text", "JSON mode", "Schema"], fontsize=20)
+            ax.text(i, v / 2, f"{v:.0%}", ha="center", va="center", color="white", fontsize=44, fontweight="bold")
+        ax.set_xticks(range(3), ["Plain text", "JSON", "Schema"], fontsize=26)
         ax.set_ylim(0, 1.05)
+        ax.set_yticks([0, 0.5, 1.0])
         ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
-        d, (cl, ch) = acc_eff["diff"] * 100, (acc_eff["ci"][0] * 100, acc_eff["ci"][1] * 100)
-        body(
-            fig,
-            0.2,
-            f"JSON vs text: {d:+.1f} pp, 95% CI [{cl:+.1f}, {ch:+.1f}].\nThe interval rules out any meaningful drop.",
-            26,
-        )
-        pdf.savefig(fig)
-        plt.close(fig)
+        text(fig, 0.17, f"JSON vs text: {eff['diff'] * 100:+.1f} pp  (95% CI {eff['ci'][0] * 100:+.1f} to "
+                        f"{eff['ci'][1] * 100:+.1f})", 26, INK, "bold")  # fmt: skip
+        text(fig, 0.12, "Paired test on the same questions.", 24)
+        save(fig)
 
         # 4 - reliability
-        fig = slide(pdf, 4, T, "But it made outputs\nmachine-readable", "finding 2")
-        ax = fig.add_axes([0.1, 0.3, 0.82, 0.38])
+        fig = new_slide(4, T, "finding 2", "But it made output\nmachine-readable")
+        ax = fig.add_axes([0.11, 0.25, 0.81, 0.40])
         style_ax(ax)
         x = np.arange(len(models))
+        labels = {"text": "Plain text", "json": "JSON", "schema": "Schema"}
         for j, (m, c) in enumerate(zip(modes, [TEXT_C, JSON_C, SCHEMA_C], strict=True)):
             v = [cells[(mo, m)]["parse_first_attempt"] for mo in models]
-            ax.bar(
-                x + (j - 1) * 0.27,
-                v,
-                0.25,
-                color=c,
-                label={"text": "Plain text", "json": "JSON", "schema": "Schema"}[m],
-            )
-        ax.set_xticks(x, models, fontsize=20)
-        ax.set_ylim(0, 1.1)
+            bars = ax.bar(x + (j - 1) * 0.27, v, 0.25, color=c, label=labels[m])
+            if m == "text":
+                for b, val in zip(bars, v, strict=True):
+                    if val < 0.995:
+                        ax.text(b.get_x() + b.get_width() / 2, val + 0.02, f"{val:.0%}", ha="center",
+                                fontsize=24, fontweight="bold", color=INK)  # fmt: skip
+        ax.set_xticks(x, models, fontsize=24)
+        ax.set_ylim(0, 1.12)
+        ax.set_yticks([0, 0.5, 1.0])
         ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
-        ax.legend(fontsize=16, frameon=False, ncols=3, loc="upper left", bbox_to_anchor=(0, 1.12))
-        phi = cells[(models[0], "text")]["parse_first_attempt"]
-        body(
-            fig,
-            0.2,
-            f"Valid output on first try: plain text {pooled['text']['parse_first_attempt']:.0%}, JSON/schema 100%.\n"
-            f"{models[0]} in plain text: only {phi:.0%}. It kept dropping the label.",
-            24,
-        )
-        pdf.savefig(fig)
-        plt.close(fig)
+        ax.legend(fontsize=20, frameon=False, ncols=3, loc="lower left", bbox_to_anchor=(0, 1.0))
+        text(fig, 0.17, f"Valid on first try: {pooled['text']['parse_first_attempt']:.0%} (text) → 100% (JSON)",
+             26, INK, "bold")  # fmt: skip
+        text(fig, 0.12, f"{ {'phi3': 'Phi-3'}.get(models[0], models[0]) } kept dropping the 'Answer:' label.", 24)
+        save(fig)
 
         # 5 - cache trap
-        g = models[-1]
-        cold, warm, txt = (
-            cells[(g, "json")]["latency_median_ms"] / 1000,
-            cells[(g, "json")]["latency_warm_median_ms"] / 1000,
-            cells[(g, "text")]["latency_median_ms"] / 1000,
-        )
-        fig = slide(pdf, 5, T, "My benchmark said JSON\nwas 18% faster.\nIt wasn't.", "finding 3 · the trap")
-        ax = fig.add_axes([0.3, 0.3, 0.62, 0.3])
-        style_ax(ax)
-        ax.barh(
-            [2, 1, 0],
-            [txt, cold, warm],
-            color=[TEXT_C, JSON_C, BG],
-            edgecolor=[TEXT_C, JSON_C, JSON_C],
-            linewidth=3,
-            hatch=[None, None, "//"],
-            height=0.6,
-        )
+        fig = new_slide(5, T, "finding 3 · the trap", "My benchmark said\nJSON was faster.\nIt wasn't.")
+        ax = fig.add_axes([0.33, 0.33, 0.59, 0.25])
+        style_ax(ax, grid_axis="x")
+        ax.barh([2, 1, 0], [txt, cold, warm], height=0.62, color=[TEXT_C, JSON_C, BG],
+                edgecolor=[TEXT_C, JSON_C, JSON_C], linewidth=3, hatch=[None, None, "//"])  # fmt: skip
         for yy, v in zip([2, 1, 0], [txt, cold, warm], strict=True):
-            ax.text(v + 0.1, yy, f"{v:.1f} s", va="center", fontsize=22, fontweight="bold")
-        ax.set_yticks([2, 1, 0], ["Plain text", "JSON, cold", "JSON, cached"], fontsize=20)
-        ax.grid(axis="x", color=GRID)
-        ax.grid(axis="y", visible=False)
-        ax.set_xlim(0, cold * 1.25)
-        ax.set_title(f"{g}, median response time", fontsize=18, color=INK2, loc="left")
-        body(
-            fig,
-            0.2,
-            "JSON and schema prompts were identical, so Ollama's prompt cache\n"
-            "gave the second one a free head start. Cold-only: structured\n"
-            "output is the same speed or slower. Fixed with a per-request nonce.",
-            21,
-        )
-        pdf.savefig(fig)
-        plt.close(fig)
+            ax.text(v + cold * 0.03, yy, f"{v:.1f} s", va="center", fontsize=28, fontweight="bold")
+        ax.set_yticks([2, 1, 0], ["Plain text", "JSON, cold", "JSON, cached"], fontsize=24)
+        ax.set_xlim(0, cold * 1.3)
+        ax.set_xticks([])
+        ax.spines["bottom"].set_visible(False)
+        text(fig, 0.625, f"{big}, median response time", 22, MUTED)
+        text(fig, 0.27, "JSON and schema prompts were identical,\nso Ollama's prompt cache gave the second\n"
+                        "one a free head start.", 26)  # fmt: skip
+        text(fig, 0.15, f"Cold-only: {min(ratios):.2f}–{max(ratios):.2f}× plain text.\nFixed with a per-request nonce.",
+             26, INK, "bold")  # fmt: skip
+        save(fig)
 
         # 6 - confidence
-        fig = slide(pdf, 6, T, '"100% confident"\nbarely means anything', "finding 4")
-        fig.text(0.08, 0.6, f"{ones}/{n}", fontsize=110, fontweight="bold", color=JSON_C)
-        body(fig, 0.47, "answers stated confidence = exactly 1.0", 26, INK)
-        body(
-            fig,
-            0.39,
-            f"• {hcw} answers were wrong at ≥ 0.9 confidence\n"
-            '• Phi-3 said "33 days" (28 + 2 = 30) at 1.0, in all 3 modes\n'
-            f"• Confidence vs correctness: AUROC {sub['auroc']:.2f}\n   (0.5 = coin flip)",
-            24,
-        )
-        body(fig, 0.13, "Don't route answers to humans on self-reported confidence.", 23, BAD, "bold")
-        pdf.savefig(fig)
-        plt.close(fig)
+        fig = new_slide(6, T, "finding 4", '"100% confident"\nbarely means\nanything')
+        fig.text(X0, 0.57, f"{ones}/{n}", fontsize=130, fontweight="bold", color=JSON_C, va="top")
+        text(fig, 0.44, "answers stated confidence = 1.0", 32, INK, "bold")
+        text(fig, 0.37,
+             f"• {hcw} were wrong at ≥ 0.9 confidence\n"
+             "• Phi-3: \"33 days\" (28 + 2 = 30),\n   at 1.0, in all three modes\n"
+             f"• AUROC {sub['auroc']:.2f}: barely better\n   than a coin flip (0.5)", 28)  # fmt: skip
+        text(fig, 0.16, "Don't route answers to humans\non self-reported confidence.", 28, BAD, "bold")
+        save(fig)
 
         # 7 - takeaways
-        fig = slide(pdf, 7, T, "What I'd tell an\nAI team", "takeaways")
-        body(
-            fig,
-            0.66,
-            "1.  Use structured output. For grounded Q&A\n      with small models, it cost no measurable accuracy.\n\n"
-            "2.  Measure latency on cold calls. Prompt\n      caching silently fakes speed-ups.\n\n"
-            "3.  Don't trust verbalised confidence.\n      Use retrieval checks or a verifier instead.\n\n"
-            "4.  Report the parser you used. 'Reliability'\n      gains depend on how strict it is.",
-            25,
-            INK,
-        )
-        pdf.savefig(fig)
-        plt.close(fig)
+        fig = new_slide(7, T, "takeaways", "What I'd tell\nan AI team")
+        items = [
+            ("Use structured output.", "For grounded Q&A it cost no\nmeasurable accuracy."),
+            ("Benchmark latency cold.", "Shared prompt prefixes fake\nspeed-ups through the cache."),
+            ("Don't trust stated confidence.", "Check retrieval or use a\nverifier instead."),
+            ("Report your parser.", "'Reliability' gains depend on\nhow strict it is."),
+        ]
+        for i, (head, body) in enumerate(items):
+            y = 0.68 - i * 0.145
+            text(fig, y, f"{i + 1}", 44, JSON_C, "bold")
+            text(fig, y, head, 30, INK, "bold", x=X0 + 0.07)
+            text(fig, y - 0.04, body, 25, INK2, x=X0 + 0.07)
+        save(fig)
 
-        # 8 - method + CTA
-        fig = slide(pdf, 8, T, "How it's built", "open source")
-        body(
-            fig,
-            0.74,
-            "Python · Ollama · Pydantic · NumPy · pandas\n"
-            "Paired bootstrap CIs + McNemar exact tests\n"
-            "Calibration: ECE, Brier, AUROC\n"
-            "No-egress privacy guard, verified in CI\n"
-            "46 tests · interactive results dashboard\n"
-            "Every finding sentence is generated from the data",
-            25,
-        )
-        body(fig, 0.36, "github.com/AbdulMuhaiminKhan/\nprivacy-first-llm-eval", 27, TEXT_C, "bold")
-        body(fig, 0.2, "What would you test next:\nnewer models, quantisation, or harder reasoning?", 25, INK, "bold")
-        pdf.savefig(fig)
-        plt.close(fig)
+        # 8 - method + where to find it
+        fig = new_slide(8, T, "open source", "How it's built")
+        text(fig, 0.78,
+             "• Python · Ollama · Pydantic\n"
+             "• Paired bootstrap CIs + McNemar tests\n"
+             "• Calibration: ECE, Brier, AUROC\n"
+             "• No-egress privacy guard, tested in CI\n"
+             "• 46 tests · interactive dashboard\n"
+             "• Findings generated from the data", 28)  # fmt: skip
+        text(fig, 0.33, "Results, code and all answers:", 26, INK2)
+        text(fig, 0.285, DASHBOARD, 26, TEXT_C, "bold")
+        text(fig, 0.24, "(link in my Featured section)", 22, MUTED)
+        text(fig, 0.15, "Next: newer 2026 models\nand quantisation.", 28, INK, "bold")
+        save(fig)
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("run", type=Path)
     ap.add_argument("--out", type=Path, default=Path("docs/linkedin_carousel.pdf"))
-    a = ap.parse_args()
-    build(json.loads((a.run / "analysis.json").read_text(encoding="utf-8")), a.out)
-    print(f"Wrote {a.out}")
+    args = ap.parse_args()
+    build(json.loads((args.run / "analysis.json").read_text(encoding="utf-8")), args.out)
+    print(f"Wrote {args.out}")
 
 
 if __name__ == "__main__":
