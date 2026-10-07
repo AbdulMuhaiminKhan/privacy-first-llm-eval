@@ -1,0 +1,14 @@
+[browser]
+gatherUsageStats = false
+
+[server]
+port = 8765
+address = "127.0.0.1"
+headless = true  # no first-run e-mail prompt; open the URL yourself
+maxUploadSize = 50
+
+[theme]
+primaryColor = "#2a78d6"
+
+[client]
+toolbarMode = "minimal"

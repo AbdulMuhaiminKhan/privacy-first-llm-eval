@@ -8,3 +8,5 @@ results/*
 !results/*_20261001_075634.*
 *.egg-info/
 !results/20261002_000441/
+app_log.txt
+Claude outputs/

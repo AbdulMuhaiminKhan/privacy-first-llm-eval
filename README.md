@@ -156,6 +156,19 @@ All tables, charts and the dashboard are generated from `results/<run_id>/record
 
 To view it locally, open `docs/index.html` in a browser.
 
+## Try the app
+
+A local web app to ask questions about the sample handbook, or your own PDF, and browse the benchmark results:
+
+```powershell
+pip install -r requirements.txt
+python -m streamlit run app.py   # then open http://127.0.0.1:8765
+```
+
+- **Ask the document:** pick a model and an output mode, ask a question, and see the answer, the source page, latency, format validity and the exact chunks the model read.
+- **Benchmark results:** the real run's findings, charts and every individual answer, with filters such as *confidently wrong*.
+- **Offline:** the egress guard is on, Streamlit usage statistics are off, the app listens on localhost only, and uploaded files stay on your machine.
+
 ## Reproduce the experiments
 
 ```powershell
@@ -215,6 +228,7 @@ flowchart LR
 ```
 src/assistant/   config · documents (pypdf) · retrieval (BM25) · llm (Ollama wrapper) · schemas (Pydantic)
                  structured (validation + retry) · textparse · assistant (modes) · cli
+app.py           Streamlit app (ask the document + results explorer)
 src/benchmark/   runner · records · grading · stats · calibration · analysis · charts · report · egress
                  memory (psutil) · scoring · __main__ (CLI: run / models / analyze / publish)
 configs/         models.json (model groups, verified tags)
