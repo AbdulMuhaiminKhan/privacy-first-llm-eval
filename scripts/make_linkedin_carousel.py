@@ -239,7 +239,7 @@ def build(a: dict, out: Path) -> None:
             "Paired bootstrap CIs + McNemar exact tests\n"
             "Calibration: ECE, Brier, AUROC\n"
             "No-egress privacy guard, verified in CI\n"
-            "43 tests · interactive results dashboard\n"
+            "46 tests · interactive results dashboard\n"
             "Every finding sentence is generated from the data",
             25,
         )

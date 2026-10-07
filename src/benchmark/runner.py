@@ -39,6 +39,16 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+def _os_name() -> str:
+    """platform.release() reports "10" on Windows 11; the build number (>= 22000) tells them apart."""
+    if platform.system() == "Windows":
+        try:
+            return "Windows 11" if int(platform.version().split(".")[2]) >= 22000 else "Windows 10"
+        except (IndexError, ValueError):
+            pass
+    return f"{platform.system()} {platform.release()}"
+
+
 def environment_info(llm: OllamaLLM) -> dict:
     try:
         with urllib.request.urlopen(f"{llm.settings.ollama_host.rstrip('/')}/api/version", timeout=5) as r:
@@ -55,7 +65,7 @@ def environment_info(llm: OllamaLLM) -> dict:
         gpu = None
     return {
         "gpu": gpu,
-        "os": f"{platform.system()} {platform.release()}",
+        "os": _os_name(),
         "machine": platform.machine(),
         "cpu": platform.processor() or None,
         "physical_cores": psutil.cpu_count(logical=False),

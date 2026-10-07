@@ -26,5 +26,5 @@ Rule: if a number didn't come out of your own run, leave it out. Interviewers as
 - Quantified the reliability side: structured modes raised end-to-end accuracy by **+11.7 pp** (strict parser) and **+4.4 pp** (lenient parser). I also caught a **prompt-cache artifact** that made JSON look 18% faster; on cold calls it is **0.93–1.34× slower**, and I fixed the benchmark so no run can reuse another's prompt cache.
   *(Source: Findings → End-to-end accuracy, Parser-strictness check, Latency; docs/DECISIONS.md E9)*
 
-- Showed that LLM **self-reported confidence works like a switch, not a probability**: **475/540** answers stated exactly 1.0, and confidence barely separated right from wrong answers (**AUROC 0.58**, excluding refusals). **18 answers were wrong at ≥ 0.9 confidence.** Shipped an interactive dashboard, **43 automated tests** and a CI-verified **no-egress privacy guard**.
+- Showed that LLM **self-reported confidence works like a switch, not a probability**: **475/540** answers stated exactly 1.0, and confidence barely separated right from wrong answers (**AUROC 0.58**, excluding refusals). **18 answers were wrong at ≥ 0.9 confidence.** Shipped an interactive dashboard, **46 automated tests** and a CI-verified **no-egress privacy guard**.
   *(Source: Findings → Confidence calibration, Confidence collapse, High-confidence answers)*
